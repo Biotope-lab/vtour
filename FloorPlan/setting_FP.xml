@@ -104,7 +104,33 @@
 	<layer name="plan_1_16" style="pointflpl" parent="plan_1" capturewheel="false" x="321" y="-197" linkedscene="scene_28" title="28" />
 	<layer name="plan_1_17" style="pointflpl" parent="plan_1" capturewheel="false" x="321" y="-238" linkedscene="scene_29" title="29" />
 	<layer name="plan_1_18" style="pointflpl" parent="plan_1" capturewheel="false" x="407" y="-227" linkedscene="scene_30" title="30" />
-	<layer name="plan_1_19" style="pointflpl" parent="plan_1" capturewheel="false" x="478" y="-219" linkedscene="scene_36_dsc07184_panorama" title="36_DSC07184 Panorama" />
+	<layer name="plan_1_19" style="pointflpl" parent="plan_1" capturewheel="false" x="478" y="-219" linkedscene="scene_31" title="31" />
+	<layer name="plan_1_20" style="pointflpl" parent="plan_1" capturewheel="false" x="440" y="-144" linkedscene="scene_32" title="32" />
+	<layer name="plan_1_21" style="pointflpl" parent="plan_1" capturewheel="false" x="468" y="-116" linkedscene="scene_33" title="33" />
+	<layer name="plan_1_22" style="pointflpl" parent="plan_1" capturewheel="false" x="492" y="-96" linkedscene="scene_34" title="34" />
+	<layer name="plan_1_23" style="pointflpl" parent="plan_1" capturewheel="false" x="476" y="-60" linkedscene="scene_35" title="35" />
+	<layer name="plan_1_24" style="pointflpl" parent="plan_1" capturewheel="false" x="456" y="-16" linkedscene="scene_36" title="36" />
+	<layer name="plan_1_25" style="pointflpl" parent="plan_1" capturewheel="false" x="432" y="-56" linkedscene="scene_37" title="37" />
+	<layer name="plan_1_26" style="pointflpl" parent="plan_1" capturewheel="false" x="408" y="-28" linkedscene="scene_38" title="38" />
+	<layer name="plan_1_27" style="pointflpl" parent="plan_1" capturewheel="false" x="460" y="28" linkedscene="scene_39" title="39" />
+	<layer name="plan_1_28" style="pointflpl" parent="plan_1" capturewheel="false" x="460" y="76" linkedscene="scene_40" title="40" />
+	<layer name="plan_1_41" style="pointflpl" parent="plan_1" capturewheel="false" x="423" y="80" linkedscene="scene_41" title="41" />
+	<layer name="plan_1_42" style="pointflpl" parent="plan_1" capturewheel="false" x="384" y="82" linkedscene="scene_42" title="42" />
+	<layer name="plan_1_43" style="pointflpl" parent="plan_1" capturewheel="false" x="351" y="76" linkedscene="scene_43" title="43" />
+	<layer name="plan_1_44" style="pointflpl" parent="plan_1" capturewheel="false" x="293" y="79" linkedscene="scene_44" title="44" />
+	<layer name="plan_1_45" style="pointflpl" parent="plan_1" capturewheel="false" x="295" y="28" linkedscene="scene_45" title="45" />
+	<layer name="plan_1_46" style="pointflpl" parent="plan_1" capturewheel="false" x="245" y="23" linkedscene="scene_46" title="46" />
+	<layer name="plan_1_47" style="pointflpl" parent="plan_1" capturewheel="false" x="231" y="65" linkedscene="scene_47" title="47" />
+	<layer name="plan_1_48" style="pointflpl" parent="plan_1" capturewheel="false" x="183" y="39" linkedscene="scene_48" title="48" />
+	<layer name="plan_1_49" style="pointflpl" parent="plan_1" capturewheel="false" x="124" y="15" linkedscene="scene_49" title="49" />
+	<layer name="plan_1_50" style="pointflpl" parent="plan_1" capturewheel="false" x="103" y="76" linkedscene="scene_50" title="50" />
+	<layer name="plan_1_51" style="pointflpl" parent="plan_1" capturewheel="false" x="71" y="71" linkedscene="scene_51" title="51" />
+	<layer name="plan_1_52" style="pointflpl" parent="plan_1" capturewheel="false" x="39" y="49" linkedscene="scene_52" title="52" />
+	<layer name="plan_1_53" style="pointflpl" parent="plan_1" capturewheel="false" x="66" y="-12" linkedscene="scene_53" title="53" />
+	<layer name="plan_1_54" style="pointflpl" parent="plan_1" capturewheel="false" x="20" y="-25" linkedscene="scene_54" title="54" />
+	<layer name="plan_1_55" style="pointflpl" parent="plan_1" capturewheel="false" x="-20" y="-25" linkedscene="scene_55" title="55" />
+	<layer name="plan_1_56" style="pointflpl" parent="plan_1" capturewheel="false" x="-51" y="15" linkedscene="scene_56" title="56" />
+	<layer name="plan_1_57" style="pointflpl" parent="plan_1" capturewheel="false" x="-63" y="78" linkedscene="scene_57" title="57" />
 	
 
 	<!-- *************          POINTS VIEW          **************** -->
