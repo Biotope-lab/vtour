@@ -5,7 +5,7 @@
 	<include url="%SWFPATH%/add_hotspot/plugins_l/add_hotspot.xml" />
 
 
-	<!-- <include url="%SWFPATH%/add_hotspot/plugins_l/editor/add_hotspot_2.xml" /> -->
+	<!--<include url="%SWFPATH%/add_hotspot/plugins_l/editor/add_hotspot_2.xml" /> -->
 
 	<include url="FloorPlan/xml/floorplan_SM.xml" />
 
@@ -1004,7 +1004,55 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 겉감과 안감을 맞대어 만든 겹보자기이다. 겉감은 청색 명주, 안감은 홍색 명주를 사용해 만들었다. 겉감 중앙에 홍색 명주로 만들어진 끈이 달려 있다.]]>
 
 	</data>
-	
+
+	<data name="cap_g29_1">
+		<![CDATA[
+<b>말 행낭 Horse Saddle Pouch</b><br>
+국립무형유산원 '전통공예 재현·복원 연구과정' 결과물 · 2025 · 누비장 이수자 하은정 <br><br>
+
+말의 등에 얹어 물건을 담는 주머니로, 조선시대의 말 행낭을 재현한 작품이다. 겉감은 쪽 염색한 면직물과 가죽이 함께 사용되었다.
+]]>
+
+	</data>
+
+	<data name="cap_g29_2">
+		<![CDATA[
+<b>버선본집  Pattern Case of Beoseon (Quilted Sock) </b><br>
+국립민속박물관 · 조선 <br><br>
+
+버선본을 넣어 보관하는 주머니이다. 사각형으로 재단된 비단의 세 모서리를 모아 바느질하였고 다른 한모서리는 주머니의 덮개 역할을 한다. 겉감은 황색 비단이고, 안감으로는 청색 비단을 사용했다.
+]]>
+	</data>
+
+	<data name="cap_g29_3">
+		<![CDATA[
+<b>장신구 상자 Jewelry Box</b><br>
+숙명여자대학교 박물관 · 조선 <br><br>
+
+장신구를 담아 보관하는 상자이다. 상자의 겉면은 금사로 수를 놓은 청색의 명주로 꾸며 장식하였다.
+]]>
+
+	</data>
+
+	<data name="cap_g29_4">
+		<![CDATA[
+<b>사주보 四柱褓 Sajubo (Pouch containing One's Written Fate) </b><br>
+숙명여자대학교 박물관 · 조선 <br><br>
+
+남자의 집에서 약혼 또는 정혼의 의미를 담아 여자의 집으로 신랑의 사주단자를 싸서 보내는 보자기이다. 사주보는 청색과 홍색의 명주(비단)를 사용해 안감과 겉감을 다르게 꾸민다. 한쪽에는 봉(封)자를, 다른 한 쪽에는 근(謹)자를 수놓았다.
+]]>
+	</data>
+
+	<data name="cap_g29_5">
+		<![CDATA[
+<b>원형 쪽물 구절판 Gujeolpan (Round Plate) for Indigo Colors </b><br>
+국가유산청 전승공예품은행 · 2020 · 채상장 전승교육사 김영관 <br><br>
+
+원형의 바구니와 작은 그릇으로 구성된 구절판이다. 그릇은 푸른색으로 칠이 되어있으며, 바구니는 쪽으로 물들인 대나무를 엮어 만들었다.
+]]>
+	</data>
+
+
 	<!-- *** add hotspt *** -->
 
 	<include url="%FIRSTXML%/add_hotspot/plugins_l/plugin_a/vid_hs.xml"/>
@@ -3756,18 +3804,86 @@ ath="-84.2245" atv="37.0127"		 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5)
 		 animurl="Animated/ani30.png"
 ath="173.1108" atv="23.2231" 		 onclick="loadscene(scene_30,null,MERGE,BLEND(0.5));"
 		 onloaded="hs_play(hsp_29_30);" />
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+		<hotspot name="hs_gallery_29_1"
+ url="images/Click.png"
+ath="12.3982" atv="13.2284"   scale="0.35"
+ distorted="true"
+ handcursor="true"
+ onclick="
+            set_gallery_caps_from_data(cap_g29_1,cap_g29_1);
+            open_gallery(2,
+              'images/gallery/29_1_1.jpg',
+              'images/gallery/29_1_2.jpg'
+
+            );
+         " />
+
+		<hotspot name="hs_gallery_29_2"
+ url="images/Click.png"
+ath="-30.1672" atv="30.9041" scale="0.35"
+ distorted="true"
+ handcursor="true"
+ onclick="
+            set_gallery_caps_from_data(cap_g29_2,cap_g29_2,cap_g29_2,cap_g29_2);
+            open_gallery(4,
+              'images/gallery/29_2_1.jpg',
+              'images/gallery/29_2_2.jpg',
+              'images/gallery/29_2_3.jpg',
+              'images/gallery/29_2_4.jpg'
+			  
+            );
+         " />
+
+		<hotspot name="hs_gallery_29_3"
+		 url="images/Click.png"
+ath="-5.4926" atv="33.3007"  scale="0.35"
+		 distorted="true"
+		 handcursor="true"
+		 onclick="
+            set_gallery_caps_from_data(cap_g29_3,cap_g29_3,cap_g29_3,cap_g29_3);
+            open_gallery(4,
+              'images/gallery/29_3_1.jpg',
+			  'images/gallery/29_3_2.jpg',
+			  'images/gallery/29_3_3.jpg',
+			  'images/gallery/29_3_4.jpg'
+            );
+         " />
+
+
+
+		<hotspot name="hs_gallery_29_4"
+ url="images/Click.png"
+ath="-10.2873" atv="46.4718"  scale="0.35"
+ distorted="true"
+ handcursor="true"
+ onclick="
+            set_gallery_caps_from_data(cap_g29_4,cap_g29_4,cap_g29_4,cap_g29_4);
+            open_gallery(4,
+              'images/gallery/29_4_1.jpg',
+			  'images/gallery/29_4_2.jpg',
+			  'images/gallery/29_4_3.jpg',
+			  'images/gallery/29_4_4.jpg'
+            );
+         " />
+
+
+		<hotspot name="hs_gallery_29_5"
+ url="images/Click.png"
+ath="12.4779" atv="43.4426" scale="0.35"
+ distorted="true"
+ handcursor="true"
+ onclick="
+            set_gallery_caps_from_data(cap_g29_5,cap_g29_5,cap_g29_5);
+            open_gallery(3,
+              'images/gallery/29_5_1.jpg',
+			  'images/gallery/29_5_2.jpg',
+			  'images/gallery/29_5_3.jpg'
+            );
+         " />
 
 	</scene>
 
