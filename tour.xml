@@ -4,7 +4,7 @@
 
 	<include url="%SWFPATH%/add_hotspot/plugins_l/add_hotspot.xml" />
 
-	<!-- <include url="%SWFPATH%/add_hotspot/plugins_l/editor/add_hotspot_2.xml" /> -->
+	<include url="%SWFPATH%/add_hotspot/plugins_l/editor/add_hotspot_2.xml" /> 
 
 	<include url="FloorPlan/xml/floorplan_SM.xml" />
 
@@ -1190,7 +1190,7 @@ ath="-38.4684" atv="6.1697" scale="0.35"
  style="hs_anim"
  url="Animated/ani4.png"
  animurl="Animated/ani4.png"
-th="123.9116" atv="0.6048"
+ath="124.0548" atv="0.6871"
 	 onclick="loadscene(scene_4_dsc06586_panorama,null,MERGE,BLEND(0.5));"
  onloaded="hs_play(hsp_8_4);" />
 
