@@ -5,7 +5,7 @@
 	<include url="%SWFPATH%/add_hotspot/plugins_l/add_hotspot.xml" />
 
 
-	<!-- <include url="%SWFPATH%/add_hotspot/plugins_l/editor/add_hotspot_2.xml" />-->
+	<!--<include url="%SWFPATH%/add_hotspot/plugins_l/editor/add_hotspot_2.xml" />-->
 
 	<include url="FloorPlan/xml/floorplan_SM.xml" />
 
@@ -577,6 +577,25 @@ Jjokbit color of Joseon’s official uniforms varied over time within the larger
 <br><br>
 In addition, jjokbit was widely used by the common people. People dyed various clothes or everyday items with jjok to make them appear more stylish. The dowry for a betrothed daughter often included jjok-dyed blankets and fabrics for clothing, reflecting a mother’s earnest wishes. In sum, jjokbit was a warm and familiar color that accompanied people in all their joys and sorrows, remaining close to their hearts in everyday life.]]>
 	</data>
+
+	<data name="txt_hs_article_21_title">
+		<![CDATA[
+생활을 지킨 푸른 빛 <br>
+The Blue Hue that Has Protected Our Lives
+]]>
+	</data>
+
+	<data name="txt_hs_article_21_body">
+		<![CDATA[
+쪽빛은 단순히 색을 내는 기술을 넘어 생활과 건강을 지켜온 지혜였다. 쪽으로 염색한 직물은 쉽게 색이 바래지 않고, 항균·방충 효과가 높아 복식뿐만 아니라 일상용품에도 다양하게 사용 되었다.
+<br><br>
+쪽으로 염색한 천과 종이 등은 잘 삭지 않고 오래가므로 천과 종이의 질을 높이는 데 사용되기도 하였다. 이를 활용한 감지(紺紙)와 쪽 염색 비단으로 장황한 책 표지는 귀한 서책을 해충으로부터 보호하고 오랫동안 보존하는 데 큰 도움이 되었다.
+<br><br>
+Jjok dyeing is much more than a means of providing color and it represents the wisdom that protects our lives and our health. As fabrics dyed with jjok do not fade and posses strong antibacterial and insect-repelling properties, they have long been widely used to make everyday items including clothing.  
+<br><br>
+As jjok-dyed cloth and paper are resistant to decay and last a long time, jjok was also used to improve the quality of cloth and paper. Paper and silk covers dyed with jjok were extremely effective in protecting valuable books from harmful insects and preserving them for many years.
+]]>	
+	</data>
 	
 	<data name="cap_g7_1">
 		<![CDATA[
@@ -734,6 +753,46 @@ In addition, jjokbit was widely used by the common people. People dyed various c
 
 ]]>
 	</data>
+
+
+	<data name="cap_g19_1">
+		<![CDATA[
+<b>김후 초상 金㷞 肖像 Portrait of Kim Hu</b><br>
+수원화성박물관 · 경기도 유형문화유산 · 1796 이후 <br><br>
+
+김후(金㷞, 1751~1805)의 상반신 초상이다. 족자를 꾸미는 회장(回裝) 부분은 연한 청색의 비단으로 장황 하였다. 가슴에 두 마리의 호랑이가 있는 흉배가 있는 어두운 현록색의 단령을 입은 모습을 통해 무관 당상 관임을 알 수 있다.
+
+]]>
+	</data>
+	
+	
+		<data name="cap_g20_1">
+		<![CDATA[
+<b>단령 團領 Dallyeong (Ceremonial Robe)</b><br>
+국립무형유산원 '전통공예 재현·복원 연구과정' 결과물 · 2019 · 침선장 이수자 안혜선 · 자수장 이수자 이영분 · 자수장 이수자 권미영 <br><br>
+
+경기도 여주박물관의 소장품인 전(傳) 화산군 이연(花山君 李渷, 1647~1702)의 단령을 재현한 작품이다, 겉감은 쪽으로 염색한 후 황색을 내는 황백과 황련으로 염색하여 현록색을 띄고, 안감은 쪽으로 염색하여 청색을 띤다.
+]]>
+	</data>
+
+	<data name="cap_g20_2">
+		<![CDATA[
+<b>관복함 官服函 Official Uniform Box</b><br>
+국립민속박물관 · 조선 <br><br>
+
+관모와 관대, 관복 등을 넣어 보관하는 상자이다. 나무로 틀을 짠 상자의 안에는 남색으로 염색한 한지를 발라 마감하였다.
+]]>
+	</data>
+
+	<data name="cap_g20_3">
+		<![CDATA[
+<b>각대 角帶 Gakdae (Horn Belt)</b><br>
+국립민속박물관 · 조선<br><br>
+
+백관의 관복에서 허리에 두르던 띠이다. 나무를 구부려 형태를 만든 후 바깥면은 옻칠을 하고, 안쪽면에는 청색 비단을 덧대었다.
+]]>
+	</data>
+	
 	<!-- *** add hotspt *** -->
 
 	<include url="%FIRSTXML%/add_hotspot/plugins_l/plugin_a/vid_hs.xml"/>
@@ -1724,8 +1783,16 @@ ath="-80.0568" atv="0.0367"			 onclick="loadscene(scene_18,null,MERGE,BLEND(0.5)
  style="hs_anim"
  url="Animated/ani19.png"
  animurl="Animated/ani19.png"
-ath="-89.8724" atv="0.0824" 		 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
+ath="-88.0744" atv="0.2857"		 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
  onloaded="hs_play(hsp_13_19);" />
+
+
+		<hotspot name="hsp_13_20"
+ style="hs_anim"
+ url="Animated/ani20.png"
+ animurl="Animated/ani20.png"
+ath="-92.1888" atv="-1.5221"	 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_13_20);" />
 
 
 		<hotspot name="hsp_13_24"
@@ -1854,8 +1921,15 @@ ath="-77.3521" atv="0.6877" 			 onclick="loadscene(scene_18,null,MERGE,BLEND(0.5
  style="hs_anim"
  url="Animated/ani19.png"
  animurl="Animated/ani19.png"
-ath="-88.9389" atv="0.1887" 			 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
+ath="-85.7479" atv="2.1304" 		 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
  onloaded="hs_play(hsp_14_19);" />
+
+		<hotspot name="hsp_14_20"
+ style="hs_anim"
+ url="Animated/ani20.png"
+ animurl="Animated/ani20.png"
+ath="-90.9340" atv="0.7911"  		 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_14_20);" />
 
 
 		<hotspot name="hs_gallery_14_1"
@@ -1959,9 +2033,15 @@ ath="-73.7589" atv="1.2646" 			 onclick="loadscene(scene_18,null,MERGE,BLEND(0.5
  style="hs_anim"
  url="Animated/ani19.png"
  animurl="Animated/ani19.png"
-ath="-90.2896" atv="0.1795" 			 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
- onloaded="hs_play(hsp_13_19);" />
+ath="-84.5040" atv="2.1502" 			 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_15_19);" />
 
+		<hotspot name="hsp_15_20"
+ style="hs_anim"
+ url="Animated/ani20.png"
+ animurl="Animated/ani20.png"
+ath="-91.4744" atv="-2.0705" 			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_15_20);" />
 
 		<hotspot name="hs_gallery_15_1"
  url="images/Click.png"
@@ -2057,8 +2137,16 @@ ath="-68.0957" atv="0.5716"			 onclick="loadscene(scene_18,null,MERGE,BLEND(0.5)
  style="hs_anim"
  url="Animated/ani19.png"
  animurl="Animated/ani19.png"
-ath="-90.2896" atv="0.1795" 			 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
+ath="-84.2279" atv="3.9221"			 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
  onloaded="hs_play(hsp_16_19);" />
+
+		<hotspot name="hsp_16_20"
+ style="hs_anim"
+ url="Animated/ani20.png"
+ animurl="Animated/ani20.png"
+ath="-92.9798" atv="-1.8477"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_16_20);" />
+
 
 
 		<hotspot name="hs_gallery_16_1"
@@ -2145,9 +2233,15 @@ ath="-50.4207" atv="2.8647" 		 onclick="loadscene(scene_18,null,MERGE,BLEND(0.5)
  style="hs_anim"
  url="Animated/ani19.png"
  animurl="Animated/ani19.png"
-ath="-90.2896" atv="0.1795" 			 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
+ath="-82.6950" atv="5.3279" 			 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
  onloaded="hs_play(hsp_17_19);" />
 
+		<hotspot name="hsp_17_20"
+ style="hs_anim"
+ url="Animated/ani20.png"
+ animurl="Animated/ani20.png"
+ath="-95.7623" atv="-1.7374"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_17_20);" />
 
 		<hotspot name="hs_gallery_17_1"
  url="images/Click.png"
@@ -2235,16 +2329,22 @@ ath="42.7813" atv="1.6314" 		 onclick="loadscene(scene_17,null,MERGE,BLEND(0.5))
  style="hs_anim"
  url="Animated/ani19.png"
  animurl="Animated/ani19.png"
-ath="-90.2896" atv="0.1795" 			 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
+ath="-77.6975" atv="1.9483" 			 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
  onloaded="hs_play(hsp_18_19);" />
 
 		<hotspot name="hsp_18_20"
  style="hs_anim"
  url="Animated/ani20.png"
  animurl="Animated/ani20.png"
-ath="175.7890" atv="11.2836"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
+ath="-94.2802" atv="0.4291"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
  onloaded="hs_play(hsp_18_20);" />
 
+		<hotspot name="hsp_18_21"
+ style="hs_anim"
+ url="Animated/ani21.png"
+ animurl="Animated/ani21.png"
+ath="176.2467" atv="9.3403"			 onclick="loadscene(scene_21,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_18_21);" />
 
 
 		<hotspot name="hs_gallery_18_1"
@@ -2275,6 +2375,124 @@ ath="175.7890" atv="11.2836"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5
 		<image>
 			<cube url="panos/21_DSC06906_Panorama.tiles/%s/l%l/%0v/l%l_%s_%0v_%0h.jpg" multires="512,768,1536,2816,5760" />
 		</image>
+		
+		
+		
+
+		<hotspot name="hsp_19_12"
+ style="hs_anim"
+ url="Animated/ani12.png"
+ animurl="Animated/ani12.png"
+ath="135.1707" atv="0.9422"
+ onclick="loadscene(scene_12,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_12);" />
+
+
+		<hotspot name="hsp_19_13"
+ style="hs_anim"
+ url="Animated/ani13.png"
+ animurl="Animated/ani13.png"
+ath="126.3305" atv="0.4242" onclick="loadscene(scene_13,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_13);" />
+
+
+
+		<hotspot name="hsp_19_14"
+ style="hs_anim"
+ url="Animated/ani14.png"
+ animurl="Animated/ani14.png"
+ath="123.0250" atv="0.7231"    onclick="loadscene(scene_14,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_14);" />
+
+
+		<hotspot name="hsp_19_15"
+ style="hs_anim"
+ url="Animated/ani15.png"
+ animurl="Animated/ani15.png"
+ath="118.4998" atv="1.1856" 	 onclick="loadscene(scene_15,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_15);" />
+
+
+		<hotspot name="hsp_19_16"
+ style="hs_anim"
+ url="Animated/ani16.png"
+ animurl="Animated/ani16.png"
+ath="107.2807" atv="1.0476"	 onclick="loadscene(scene_16,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_16);" />
+
+		<hotspot name="hsp_19_17"
+ style="hs_anim"
+ url="Animated/ani17.png"
+ animurl="Animated/ani17.png"
+ath="89.9809" atv="-0.5272"	 onclick="loadscene(scene_17,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_17);" />
+
+		<hotspot name="hsp_19_18"
+ style="hs_anim"
+ url="Animated/ani18.png"
+ animurl="Animated/ani18.png"
+ath="73.5115" atv="-0.8594" onclick="loadscene(scene_18,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_18);" />
+
+		<hotspot name="hsp_19_20"
+ style="hs_anim"
+ url="Animated/ani20.png"
+ animurl="Animated/ani20.png"
+ath="-40.0409" atv="-8.8454"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_20);" />
+
+		<hotspot name="hsp_19_21"
+ style="hs_anim"
+ url="Animated/ani21.png"
+ animurl="Animated/ani21.png"
+ ath="-148.4254" atv="7.4363" 		 onclick="loadscene(scene_21,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_21);" />
+
+		<hotspot name="hsp_19_25"
+ style="hs_anim"
+ url="Animated/ani25.png"
+ animurl="Animated/ani25.png"
+ath="-98.9199" atv="10.4654"		 onclick="loadscene(scene_25,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_25);" />
+
+
+		<hotspot name="hsp_19_26"
+ style="hs_anim"
+ url="Animated/ani26.png"
+ animurl="Animated/ani26.png"
+ath="-107.8868" atv="5.1950" 		 onclick="loadscene(scene_26,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_26);" />
+
+		<hotspot name="hsp_19_27"
+ style="hs_anim"
+ url="Animated/ani27.png"
+ animurl="Animated/ani27.png"
+ath="-138.5068" atv="7.1828"		 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_27);" />
+
+		<hotspot name="hsp_19_28"
+ style="hs_anim"
+ url="Animated/ani28.png"
+ animurl="Animated/ani28.png"
+ath="-137.0362" atv="4.3817" 	 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_19_28);" />
+
+		<hotspot name="hs_gallery_19_1"
+ url="images/Click.png"
+ ath="-0.9067" atv="15.3286" scale="0.35"
+ distorted="true"
+ handcursor="true"
+ onclick="
+            set_gallery_caps_from_data(cap_g19_1,cap_g19_1,cap_g19_1);
+            open_gallery(3,
+              'images/gallery/19_1_1.jpg',
+			  'images/gallery/19_1_2.jpg',
+			  'images/gallery/19_1_3.jpg',
+
+            );
+         " />
+
+		
 
 	</scene>
 
@@ -2290,6 +2508,170 @@ ath="175.7890" atv="11.2836"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5
 			<cube url="panos/22_DSC06922_Panorama.tiles/%s/l%l/%0v/l%l_%s_%0v_%0h.jpg" multires="512,768,1536,2816,5760" />
 		</image>
 
+
+
+
+
+
+		<hotspot name="hsp_20_14"
+ style="hs_anim"
+ url="Animated/ani14.png"
+ animurl="Animated/ani14.png"
+ath="117.9108" atv="1.2360"     onclick="loadscene(scene_14,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_14);" />
+
+
+		<hotspot name="hsp_20_15"
+ style="hs_anim"
+ url="Animated/ani15.png"
+ animurl="Animated/ani15.png"
+ath="113.6250" atv="1.4105" 	 onclick="loadscene(scene_15,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_15);" />
+
+
+		<hotspot name="hsp_20_16"
+ style="hs_anim"
+ url="Animated/ani16.png"
+ animurl="Animated/ani16.png"
+ath="107.4354" atv="4.3951" 	 onclick="loadscene(scene_16,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_16);" />
+
+		<hotspot name="hsp_20_17"
+ style="hs_anim"
+ url="Animated/ani17.png"
+ animurl="Animated/ani17.png"
+ath="96.0527" atv="3.6613"		 onclick="loadscene(scene_17,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_17);" />
+
+		<hotspot name="hsp_20_18"
+ style="hs_anim"
+ url="Animated/ani18.png"
+ animurl="Animated/ani18.png"
+ath="78.4891" atv="3.5141" 			 onclick="loadscene(scene_18,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_18);" />
+
+		<hotspot name="hsp_20_19"
+ style="hs_anim"
+ url="Animated/ani19.png"
+ animurl="Animated/ani19.png"
+ath="52.7112" atv="7.4252" 		 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_19);" />
+
+		<hotspot name="hsp_20_21"
+ style="hs_anim"
+ url="Animated/ani21.png"
+ animurl="Animated/ani21.png"
+ath="-176.0743" atv="10.7555" 		 onclick="loadscene(scene_21,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_21);" />
+
+		<hotspot name="hsp_20_22"
+ style="hs_anim"
+ url="Animated/ani22.png"
+ animurl="Animated/ani22.png"
+ath="158.5528" atv="16.2733"  		 onclick="loadscene(scene_22,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_22);" />
+
+		<hotspot name="hsp_20_23"
+ style="hs_anim"
+ url="Animated/ani23.png"
+ animurl="Animated/ani23.png"
+ath="152.8153" atv="12.5861" 		 onclick="loadscene(scene_23,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_23);" />
+
+
+		<hotspot name="hsp_20_24"
+ style="hs_anim"
+ url="Animated/ani24.png"
+ animurl="Animated/ani24.png"
+ath="149.3727" atv="8.8671"		 onclick="loadscene(scene_24,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_24);" />
+
+
+		<hotspot name="hsp_20_25"
+ style="hs_anim"
+ url="Animated/ani25.png"
+ animurl="Animated/ani25.png"
+ath="-101.1934" atv="15.4950"		 onclick="loadscene(scene_25,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_25);" />
+
+
+		<hotspot name="hsp_20_26"
+ style="hs_anim"
+ url="Animated/ani26.png"
+ animurl="Animated/ani26.png"
+ath="-113.7993" atv="6.5303"		 onclick="loadscene(scene_26,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_26);" />
+
+		<hotspot name="hsp_20_27"
+ style="hs_anim"
+ url="Animated/ani27.png"
+ animurl="Animated/ani27.png"
+ath="-161.9197" atv="14.7400"		 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_27);" />
+
+		<hotspot name="hsp_20_28"
+ style="hs_anim"
+ url="Animated/ani28.png"
+ animurl="Animated/ani28.png"
+ath="-155.0528" atv="11.0262" 	 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_28);" />
+
+		<hotspot name="hsp_20_29"
+ style="hs_anim"
+ url="Animated/ani29.png"
+ animurl="Animated/ani29.png"
+ath="-137.0362" atv="4.3817" 	 onclick="loadscene(scene_29,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_20_29);" />
+
+		<hotspot name="hs_gallery_20_1"
+ url="images/Click.png"
+ ath="22.0980" atv="-21.1107"  scale="0.35"
+ distorted="true"
+ handcursor="true"
+ onclick="
+            set_gallery_caps_from_data(cap_g20_1,cap_g20_1,cap_g20_1,cap_g20_1);
+            open_gallery(4,
+              'images/gallery/20_1_1.jpg',
+			  'images/gallery/20_1_2.jpg',
+			  'images/gallery/20_1_3.jpg',
+			  'images/gallery/20_1_4.jpg'
+
+            );
+         " />
+
+		<hotspot name="hs_gallery_20_2"
+ url="images/Click.png"
+ ath="-16.9204" atv="21.7097" scale="0.35"
+ distorted="true"
+ handcursor="true"
+ onclick="
+            set_gallery_caps_from_data(cap_g20_2,cap_g20_2,cap_g20_2,cap_g20_2,cap_g20_2);
+            open_gallery(5,
+              'images/gallery/20_2_1.jpg',
+			  'images/gallery/20_2_2.jpg',
+			  'images/gallery/20_2_3.jpg',
+			  'images/gallery/20_2_4.jpg',
+			  'images/gallery/20_2_5.jpg'
+
+            );
+         " />
+
+		<hotspot name="hs_gallery_20_3"
+ url="images/Click.png"
+ath="34.2217" atv="20.9716" scale="0.35"
+ distorted="true"
+ handcursor="true"
+ onclick="
+            set_gallery_caps_from_data(cap_g20_3,cap_g20_3,cap_g20_3,cap_g20_3,cap_g20_3);
+            open_gallery(3,
+              'images/gallery/20_3_1.jpg',
+			  'images/gallery/20_3_2.jpg',
+			  'images/gallery/20_3_3.jpg',
+
+
+            );
+         " />
+
 	</scene>
 
 	<scene name="scene_21" title="23_DSC06941 Panorama" onstart="" thumburl="panos/23_DSC06941_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
@@ -2303,6 +2685,88 @@ ath="175.7890" atv="11.2836"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5
 		<image>
 			<cube url="panos/23_DSC06941_Panorama.tiles/%s/l%l/%0v/l%l_%s_%0v_%0h.jpg" multires="512,768,1536,2816,5760" />
 		</image>
+
+
+
+
+		<hotspot name="hsp_21_18"
+ style="hs_anim"
+ url="Animated/ani18.png"
+ animurl="Animated/ani18.png"
+ath="78.4891" atv="3.5141" 			 onclick="loadscene(scene_18,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_21_18);" />
+
+		<hotspot name="hsp_21_19"
+ style="hs_anim"
+ url="Animated/ani19.png"
+ animurl="Animated/ani19.png"
+ath="146.1729" atv="10.7836"  		 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_21_19);" />
+
+		<hotspot name="hsp_21_20"
+ style="hs_anim"
+ url="Animated/ani20.png"
+ animurl="Animated/ani20.png"
+ath="-176.0743" atv="10.7555" 		 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_21_20);" />
+
+		<hotspot name="hsp_21_22"
+ style="hs_anim"
+ url="Animated/ani22.png"
+ animurl="Animated/ani22.png"
+ath="158.5528" atv="16.2733"  		 onclick="loadscene(scene_22,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_21_22);" />
+
+		<hotspot name="hsp_21_23"
+ style="hs_anim"
+ url="Animated/ani23.png"
+ animurl="Animated/ani23.png"
+ath="152.8153" atv="12.5861" 		 onclick="loadscene(scene_23,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_21_23);" />
+
+
+		<hotspot name="hsp_21_24"
+ style="hs_anim"
+ url="Animated/ani24.png"
+ animurl="Animated/ani24.png"
+ath="149.3727" atv="8.8671"		 onclick="loadscene(scene_24,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_21_24);" />
+
+
+		<hotspot name="hsp_21_25"
+ style="hs_anim"
+ url="Animated/ani25.png"
+ animurl="Animated/ani25.png"
+ath="-101.1934" atv="15.4950"		 onclick="loadscene(scene_25,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_21_25);" />
+
+
+		<hotspot name="hsp_21_26"
+ style="hs_anim"
+ url="Animated/ani26.png"
+ animurl="Animated/ani26.png"
+ath="-113.7993" atv="6.5303"		 onclick="loadscene(scene_26,null,MERGE,BLEND(0.5));"
+ onloaded="hs_play(hsp_21_26);" />
+
+
+
+
+
+
+		<hotspot name="hs_article_21"
+	 style="hs_article"
+	 url="images/textbox2.png"
+	 scale="0.3" ath="9.3155" atv="-37.2533"	 onclick="show_text_from_data(txt_hs_article_21_title, txt_hs_article_21_body);"
+			/>	
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 	</scene>
 
@@ -2353,7 +2817,7 @@ ath="175.7890" atv="11.2836"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5
 
 
 
-	<scene name="scene_30_DSC07073_Panorama" title="30_DSC07073 Panorama" onstart="" thumburl="panos/30_DSC07073_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="scene_25" title="30_DSC07073 Panorama" onstart="" thumburl="panos/30_DSC07073_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -2367,7 +2831,7 @@ ath="175.7890" atv="11.2836"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5
 
 	</scene>
 
-	<scene name="scene_31_DSC07093_Panorama" title="31_DSC07093 Panorama" onstart="" thumburl="panos/31_DSC07093_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="scene_26" title="31_DSC07093 Panorama" onstart="" thumburl="panos/31_DSC07093_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -2381,7 +2845,10 @@ ath="175.7890" atv="11.2836"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5
 
 	</scene>
 
-	<scene name="scene_32_DSC07113_Panorama" title="32_DSC07113 Panorama" onstart="" thumburl="panos/32_DSC07113_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+
+	
+
+	<scene name="scene_27" title="32_DSC07113 Panorama" onstart="" thumburl="panos/32_DSC07113_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -2395,7 +2862,7 @@ ath="175.7890" atv="11.2836"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5
 
 	</scene>
 
-	<scene name="scene_33_DSC07134_Panorama" title="33_DSC07134 Panorama" onstart="" thumburl="panos/33_DSC07134_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="scene_28" title="33_DSC07134 Panorama" onstart="" thumburl="panos/33_DSC07134_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -2409,7 +2876,7 @@ ath="175.7890" atv="11.2836"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5
 
 	</scene>
 
-	<scene name="scene_34_DSC07150_Panorama" title="34_DSC07150 Panorama" onstart="" thumburl="panos/34_DSC07150_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="scene_29" title="34_DSC07150 Panorama" onstart="" thumburl="panos/34_DSC07150_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -2423,8 +2890,8 @@ ath="175.7890" atv="11.2836"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5
 
 	</scene>
 
-	<scene name="scene_35_DSC07167_Panorama" title="35_DSC07167 Panorama" onstart="" thumburl="panos/35_DSC07167_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
-		
+	<scene name="scene_30" title="35_DSC07167 Panorama" onstart="" thumburl="panos/35_DSC07167_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
@@ -2436,6 +2903,8 @@ ath="175.7890" atv="11.2836"			 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5
 		</image>
 
 	</scene>
+
+
 
 	<scene name="scene_36_DSC07184_Panorama" title="36_DSC07184 Panorama" onstart="" thumburl="panos/36_DSC07184_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		

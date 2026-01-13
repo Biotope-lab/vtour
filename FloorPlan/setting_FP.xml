@@ -98,8 +98,13 @@
 	<layer name="plan_1_11" style="pointflpl" parent="plan_1" capturewheel="false" x="239" y="-105" linkedscene="scene_22" title="22" />
 	<layer name="plan_1_12" style="pointflpl" parent="plan_1" capturewheel="false" x="198" y="-105" linkedscene="scene_23" title="23" />
 	<layer name="plan_1_13" style="pointflpl" parent="plan_1" capturewheel="false" x="156" y="-103" linkedscene="scene_24" title="24" />
-	<layer name="plan_1_14" style="pointflpl" parent="plan_1" capturewheel="false" x="384" y="-130" linkedscene="scene_30_dsc07073_panorama" title="30_DSC07073 Panorama" />
-	<layer name="plan_1_15" style="pointflpl" parent="plan_1" capturewheel="false" x="383" y="-174" linkedscene="scene_31_dsc07093_panorama" title="31_DSC07093 Panorama" />
+	<layer name="plan_1_14" style="pointflpl" parent="plan_1" capturewheel="false" x="384" y="-130" linkedscene="scene_25" title="25" />
+	<layer name="plan_1_15" style="pointflpl" parent="plan_1" capturewheel="false" x="385" y="-172" linkedscene="scene_26" title="26" />
+	<layer name="plan_1_1" style="pointflpl" parent="plan_1" capturewheel="false" x="322" y="-162" linkedscene="scene_27" title="27" />
+	<layer name="plan_1_16" style="pointflpl" parent="plan_1" capturewheel="false" x="321" y="-197" linkedscene="scene_28" title="28" />
+	<layer name="plan_1_17" style="pointflpl" parent="plan_1" capturewheel="false" x="321" y="-238" linkedscene="scene_29" title="29" />
+	<layer name="plan_1_18" style="pointflpl" parent="plan_1" capturewheel="false" x="407" y="-227" linkedscene="scene_30" title="30" />
+	<layer name="plan_1_19" style="pointflpl" parent="plan_1" capturewheel="false" x="478" y="-219" linkedscene="scene_36_dsc07184_panorama" title="36_DSC07184 Panorama" />
 	
 
 	<!-- *************          POINTS VIEW          **************** -->
