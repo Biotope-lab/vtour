@@ -4,7 +4,7 @@
 
 	<include url="%SWFPATH%/add_hotspot/plugins_l/add_hotspot.xml" />
 
-	<include url="%SWFPATH%/add_hotspot/plugins_l/editor/add_hotspot_2.xml" /> 
+	<!--<include url="%SWFPATH%/add_hotspot/plugins_l/editor/add_hotspot_2.xml" /> -->
 
 	<include url="FloorPlan/xml/floorplan_SM.xml" />
 
