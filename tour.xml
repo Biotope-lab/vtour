@@ -465,6 +465,7 @@
 
   if(hotspot[hsp_2_video], hotspot[hsp_2_video].stop(); );
   if(hotspot[hsp_10_2_video], hotspot[hsp_10_2_video].stop(); );
+  if(hotspot[hsp_26_video], hotspot[hsp_26_video].stop(); );
 " />
 
 	<style name="hs_article"
@@ -1160,7 +1161,8 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 			 onloaded="hs_play(hsp_3_4);" />
 		
 	
-		<hotspot name="hsp_2_video" style="vid_hs_addhs" scalez="3.800" scale="3.8" depth="0" tx="-68.2000" ty="-102.6000" tz="1033.0000" videourl="%FIRSTXML%/add_hotspot/video/intro_1.mp4" info_ah="intro_1.mp4" loop="true" play_vh="true" drag_hs="false" pausedonstart="false" />
+		<hotspot name="hsp_2_video" style="vid_hs_addhs" scalez="3.800" scale="3.8" depth="0" tx="-68.2000" ty="-102.6000" tz="1033.0000" videourl="%FIRSTXML%/add_hotspot/video/intro_1.mp4"
+				 info_ah="intro_1.mp4" loop="true" play_vh="true" drag_hs="false" pausedonstart="false" />
 	</scene>
 
 	<scene name="scene_4_DSC06586_Panorama" title="4_DSC06586 Panorama" onstart="" thumburl="panos/4_DSC06586_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
@@ -1278,12 +1280,6 @@ ath="-96.3512" atv="5.3463"
 	 onclick="loadscene(scene_10,null,MERGE,BLEND(0.5));"
 	 onloaded="hs_play(hsp_5_10);" />
 
-		<hotspot name="hsp_5_57"
-	 style="hs_anim"
-	 url="Animated/ani57.png"
-	 animurl="Animated/ani57.png"
- ath="48.7827" atv="27.6004"	 onclick="loadscene(scene_57,null,MERGE,BLEND(0.5));"
-	 onloaded="hs_play(hsp_5_57);" />
 
 		<hotspot name="hsp_5_11"
 	 style="hs_anim"
@@ -3575,6 +3571,9 @@ ath="100.5017" atv="6.8573"		 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5))
 			/>
 		
 		
+	
+		<hotspot name="hsp_26_video" style="vid_hs_addhs" ath="2.1946" atv="3.5270" rz="1.23" tx="36.0000" ty="27.0000" tz="150.0000" videourl="%FIRSTXML%/add_hotspot/video/26_video.mp4" info_ah="26_video.mp4"
+				  loop="true" play_vh="true" drag_hs="false" pausedonstart="false" />
 	</scene>
 
 
