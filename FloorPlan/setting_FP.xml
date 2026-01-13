@@ -1,0 +1,109 @@
+<krpano>
+
+	<plan_settings  
+			editor="false"
+			url_plan="%FIRSTXML%/FloorPlan/"
+			start_open_plan="true"
+			start_open_plan_mobila="true"
+			auto_show_plan="false"
+			point_url_1="start.png"
+			point_url_2="spot_off.png"
+			point_url_3="activ.png"
+			pointv_url_1="eye_1.png"
+			pointv_url_2="eye_2.png"
+			pointv_url_3="eye_3.png"
+			radar_scale="0"
+			title_spot="true"
+			loadscene_blend="OPENBLEND(1.5, 0.0, 0.6, 0.5, easeOutQuad)"
+			loadsc_flags="KEEPVIEW"
+			compass="false"
+			start_open_compass="false"
+			compass_on_plan="false"
+			click_spot_exit_fs="true"
+			click_v_exit_fs="true"
+			click_exit_fs="false"
+			click_plan_fs="false"
+			zoom="true"
+			width_plans_one_all="false"
+			auto_height="true"
+			list_plan="true"
+			button_fullscreen="true"
+			button_plus_minus="true"
+			angle_placemark="true"
+			drag_plan="true"
+			margin_fs="5"
+			max_scale="1.0"
+			prealign="true"
+			backup="false"
+			edit_panel_x="48"
+			edit_panel_y="62"
+			navigation="false"
+			click_navigation="true"
+			auto_arrow="false"
+			specific_picture_point="false"
+			lang="en"
+			
+	/>
+
+
+	<action name="prealignFLPL" autorun="onstart">
+	</action>
+
+
+	<!-- popup text style when hovering the mouse pointer over a dot  -->
+	<textstyle name="showtext_1" origin="cursor" edge="bottom" xoffset="0" yoffset="-3" fadeintime="0.0" showtime="0.1" fadetime="0.0" font="Verdana" fontsize="12.0" bold="false" italic="false" textcolor="0xffffff" textalign="none" padding="3" css="" background="true" backgroundcolor="0x555555" backgroundalpha="0.8" border="false" roundedge="3" shadow="0.0" shadowrange="4.0" shadowangle="45" shadowcolor="0x000000" shadowalpha="1.0" textshadow="0.0" textshadowrange="4.0" textshadowangle="45" textshadowcolor="0x000000" textshadowalpha="1.0" noclip="true" />
+
+	<style name="arrow_navi_flpl" type="image" keep="false" edge="center" url="%FIRSTXML%/FloorPlan/image/arrow.png" atv="22.8" rx="-69.12" scale="0" alpha="0.0" distorted="true" linkedscene="" pit2="" onloaded="tween(alpha, 0.5);" onover="set(alpha, 1);" onout="set(alpha, 0.5);" ondown="drag_navi_hs();" capture="false" keep_v="true" onclick="set(global.click_hs, true); loadsc_fp(*keep_v, *linkedscene); delayedcall(1,  set(click_hs, false); );" />
+
+	<style name="pointflpl" keep="true" type="image" align="center" width="47" height="prop" scale="0.7" zorder="31" linkedscene="" title="" ah="" av="" ic_1="" ic_2="" onhover="if(plan_settings.title_spot AND title AND showtxt, showtext(*title, showtext_1));" keep_v="true" ondown="if(edit_pit, drag_p())" onclick="loadsc_fp(*keep_v, *linkedscene); click_spot_fp(*title);" />
+
+	<style name="pointflpl_v" keep="true" type="image" align="center" width="40" height="prop" ondown="drag_p_v()" title="" icon_1="" icon_2="" onhover="if(plan_settings.title_spot AND title, showtext(*title, showtext_1));" />
+
+	
+	<!--  Plan Container  -->
+	<layer name="cont_fp_all" style="cont_fp" capturewheel="false" height="152" x="60" y="41" align="leftbottom" edge="leftbottom" start_x="60" start_y="41" />
+	
+	<!--  Container of plans and buttons  -->
+	<layer name="plan_cont_fp2" style="cont_fp2" capturewheel="false" bgborder="1,1,1,1 0xFFFFFF 1.00" bgroundedge="4 4 4 4" bgshadow="0 1 13 0x000000 0.40" bgcolor="0x00" bgalpha="0.24" />
+
+	
+	<!-- ****************          PLANS          ******************* -->
+
+	<layer name="plan_1" style="style_plan" capturewheel="false" url="%FIRSTXML%/FloorPlan/plan/map2.png" title_fp="Map" pit_width="47" plan_ur="map2.png" />
+	
+
+	<!-- ***************          POINTS          ******************* -->
+
+	<layer name="plan_1_29" style="pointflpl" parent="plan_1" capturewheel="false" x="-562" y="63" linkedscene="scene_1_dsc06530_panorama_2" title="1" />
+	<layer name="plan_1_30" style="pointflpl" parent="plan_1" capturewheel="false" x="-467" y="171" linkedscene="scene_2_dsc06551_panorama" title="2" />
+	<layer name="plan_1_31" style="pointflpl" parent="plan_1" capturewheel="false" x="-340" y="174" linkedscene="scene_3_dsc06568_panorama" title="3" />
+	<layer name="plan_1_32" style="pointflpl" parent="plan_1" capturewheel="false" x="-240" y="97" linkedscene="scene_4_dsc06586_panorama" title="4" />
+	<layer name="plan_1_33" style="pointflpl" parent="plan_1" capturewheel="false" x="-120" y="41" linkedscene="scene_5_dsc06606_panorama" title="5" />
+	<layer name="plan_1_34" style="pointflpl" parent="plan_1" capturewheel="false" x="-181" y="-14" linkedscene="scene_6_dsc06623_panorama" title="6" />
+	<layer name="plan_1_35" style="pointflpl" parent="plan_1" capturewheel="false" x="-107" y="-2" linkedscene="scene_7" title="7" />
+	<layer name="plan_1_36" style="pointflpl" parent="plan_1" capturewheel="false" x="-92" y="-40" linkedscene="scene_8" title="8" />
+	<layer name="plan_1_37" style="pointflpl" parent="plan_1" capturewheel="false" x="-181" y="-80" linkedscene="scene_9" title="9" />
+	<layer name="plan_1_38" style="pointflpl" parent="plan_1" capturewheel="false" x="-146" y="-124" linkedscene="scene_10" title="10" />
+	<layer name="plan_1_39" style="pointflpl" parent="plan_1" capturewheel="false" x="1" y="-104" linkedscene="scene_11" title="11" />
+	<layer name="plan_1_40" style="pointflpl" parent="plan_1" capturewheel="false" x="129" y="-39" linkedscene="scene_12" title="12" />
+	<layer name="plan_1_2" style="pointflpl" parent="plan_1" capturewheel="false" x="163" y="-17" linkedscene="scene_13" title="13" />
+	<layer name="plan_1_3" style="pointflpl" parent="plan_1" capturewheel="false" x="199" y="-16" linkedscene="scene_14" title="14" />
+	<layer name="plan_1_4" style="pointflpl" parent="plan_1" capturewheel="false" x="235" y="-16" linkedscene="scene_15" title="15" />
+	<layer name="plan_1_5" style="pointflpl" parent="plan_1" capturewheel="false" x="273" y="-17" linkedscene="scene_16" title="16" />
+	<layer name="plan_1_6" style="pointflpl" parent="plan_1" capturewheel="false" x="309" y="-18" linkedscene="scene_17" title="17" />
+	<layer name="plan_1_7" style="pointflpl" parent="plan_1" capturewheel="false" x="344" y="-19" linkedscene="scene_18" title="18" />
+	<layer name="plan_1_8" style="pointflpl" parent="plan_1" capturewheel="false" x="372" y="-40" linkedscene="scene_19" title="19" />
+	<layer name="plan_1_9" style="pointflpl" parent="plan_1" capturewheel="false" x="396" y="-66" linkedscene="scene_20" title="20" />
+	<layer name="plan_1_10" style="pointflpl" parent="plan_1" capturewheel="false" x="284" y="-129" linkedscene="scene_21" title="21" />
+	<layer name="plan_1_11" style="pointflpl" parent="plan_1" capturewheel="false" x="239" y="-105" linkedscene="scene_22" title="22" />
+	<layer name="plan_1_12" style="pointflpl" parent="plan_1" capturewheel="false" x="198" y="-105" linkedscene="scene_23" title="23" />
+	<layer name="plan_1_13" style="pointflpl" parent="plan_1" capturewheel="false" x="156" y="-103" linkedscene="scene_24" title="24" />
+	<layer name="plan_1_14" style="pointflpl" parent="plan_1" capturewheel="false" x="384" y="-130" linkedscene="scene_30_dsc07073_panorama" title="30_DSC07073 Panorama" />
+	<layer name="plan_1_15" style="pointflpl" parent="plan_1" capturewheel="false" x="383" y="-174" linkedscene="scene_31_dsc07093_panorama" title="31_DSC07093 Panorama" />
+	
+
+	<!-- *************          POINTS VIEW          **************** -->
+
+	
+
+</krpano>
