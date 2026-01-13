@@ -641,6 +641,25 @@ The city of Naju is situated on a fertile plain through which the Yeongsangang R
 Based on this natural environment, jjok dyeing has been handed down for many generations to the present day, centered on Naju.
 ]]>
 	</data>
+
+
+	<data name="txt_hs_article_30_title">
+		<![CDATA[
+쪽빛, 문양이 되다 <br>
+Indigo, Becoming Patterns
+]]>
+	</data>
+
+	<data name="txt_hs_article_30_body">
+		<![CDATA[
+한국의 쪽빛은 천의 결을 따라 색을 물들였다면, 오스트리아의 쪽빛은 목판으로 찍은 문양을 남기고 색을 스며들게 한 것이 특징입니다. 푸른 빛 위에 남겨진 다양한 문양은 오스트리아의 자연과 문화, 그리고 그곳에 사는 사람들의 삶을 이야기합니다.
+<br><br>이제 우리는 오스트리아가 전하는 푸름의 또 다른 여정을 만나게 됩니다.<br><br>
+Whereas in Korea’s jjokbit is used to dye a fabric along its texture,
+in Austria’s indigo is used to create patterns imprinted with wooden blocks and dye the fabric. The diverse patterns imprinted in indigo represent Austria’s natural environment and culture, as well as the life of its people.<br><br>
+Now, let’s embark on another indigo journey that Austria presents.
+]]>
+	</data>
+	
 	
 	<data name="cap_g7_1">
 		<![CDATA[
@@ -949,7 +968,43 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 ]]>
 	</data>
 
+	<data name="cap_g27_1">
+		<![CDATA[
+<b>선원록 璿源錄 Seonwollok (Record of the Royal Family's Official Genealogy)
+ </b><br>
+국립고궁박물관 · 1681 <br><br>
 
+조선의 왕실 족보로, 왕의 친인척에 관한 인적 사항을 조사하여 기록하였다. 푸른색의 능화무늬 비단으로 표지를 꾸몄다.
+]]>
+	</data>
+
+	<data name="cap_g27_2">
+		<![CDATA[
+<b>유세손서 諭世孫書 Yusesonseo (King Yeongjo's Will given to King Jeongjo) </b><br>
+국립고궁박물관 · 1776 <br><br>
+
+아버지 사도세자에 대한 당시 왕세손인 산(祘, 훗날의 정조)의 효심에 감동하여 영조가 내린 유서이다. 두루 마리 형태로, 겉에는 청색의 운보무늬 비단으로 꾸몄다.
+]]>
+	</data>
+
+	<data name="cap_g27_3">
+		<![CDATA[
+<b>금광명최승왕경 金光明最勝王經 Suvarnaprabhasa Sutra(The Golden Light Sutra) </b><br>
+국립무형유산원 '전통 공예 재현·복원 연구과정' 결과 · 2025 · 자수장 이수자 윤정숙 <br><br>
+
+1622년 인목왕후(仁穆王后, 1584~1632)가 필사한 것으로 전해지는 『금광명최승왕경(金光明最勝王經)』을 재현한 작품이다. 책의 표지는 각각 다양한 색상의 명주 위에 다채로운 무늬로 수놓아 장식했다.]]>
+		
+	</data>
+
+	<data name="cap_g28_1">
+		<![CDATA[
+<b>겹보 Gyeobo (Double-layered Wrapping Cloth) </b><br>
+국립고궁박물관 · 조선 <br><br>
+
+겉감과 안감을 맞대어 만든 겹보자기이다. 겉감은 청색 명주, 안감은 홍색 명주를 사용해 만들었다. 겉감 중앙에 홍색 명주로 만들어진 끈이 달려 있다.]]>
+
+	</data>
+	
 	<!-- *** add hotspt *** -->
 
 	<include url="%FIRSTXML%/add_hotspot/plugins_l/plugin_a/vid_hs.xml"/>
@@ -3685,14 +3740,14 @@ ath="-138.3913" atv="11.3515"	 onclick="loadscene(scene_26,null,MERGE,BLEND(0.5)
 		 style="hs_anim"
 		 url="Animated/ani27.png"
 		 animurl="Animated/ani27.png"
- ath="-62.3166" atv="6.8225" 		 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
+ath="-86.0017" atv="24.4023"		 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
 		 onloaded="hs_play(hsp_29_27);" />
 
 		<hotspot name="hsp_29_28"
 		 style="hs_anim"
 		 url="Animated/ani28.png"
 		 animurl="Animated/ani28.png"
-ath="-54.0858" atv="8.1555"		 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
+ath="-84.2245" atv="37.0127"		 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
 		 onloaded="hs_play(hsp_29_28);" />
 
 		<hotspot name="hsp_29_30"
@@ -3734,14 +3789,14 @@ ath="173.1108" atv="23.2231" 		 onclick="loadscene(scene_30,null,MERGE,BLEND(0.5
  style="hs_anim"
  url="Animated/ani27.png"
  animurl="Animated/ani27.png"
- ath="-73.0605" atv="46.7286" 		 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
+ath="57.1078" atv="16.2693" 		 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
  onloaded="hs_play(hsp_30_27);" />
 
 		<hotspot name="hsp_30_28"
 		 style="hs_anim"
 		 url="Animated/ani28.png"
 		 animurl="Animated/ani28.png"
-ath="56.8516" atv="17.1038"		 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
+ath="70.5885" atv="20.4243"	 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
 		 onloaded="hs_play(hsp_30_28);" />
 
 		<hotspot name="hsp_30_29"
@@ -3753,6 +3808,12 @@ ath="96.3212" atv="26.0623" 		 onclick="loadscene(scene_29,null,MERGE,BLEND(0.5)
 
 
 
+
+		<hotspot name="hs_article_30"
+		 style="hs_article"
+		 url="images/textbox2.png"
+		 scale="0.3" ath="25.7489" atv="-26.0848"	 onclick="show_text_from_data(txt_hs_article_30_title, txt_hs_article_30_body);"
+			/>
 
 
 	</scene>
