@@ -276,8 +276,8 @@
 		y="53"
 		linkedscene="scene_6"
 		title="6"
-		ah="-79.80"
-		av="-3.77" />
+		ah="77.90"
+		av="-0.78" />
 	<layer
 		name="plan_2_7"
 		style="pointflpl"
@@ -452,8 +452,8 @@
 		y="-190"
 		linkedscene="scene_22"
 		title="22"
-		ah="-30.55"
-		av="9.05" />
+		ah="-28.71"
+		av="11.00" />
 	<layer
 		name="plan_2_23"
 		style="pointflpl"

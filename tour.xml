@@ -387,10 +387,11 @@
 	<layer name="gallery_close_hit"
 		   type="container" keep="true"
 		   parent="gallery_bg"
-		   align="lefttop" x="0" y="0" width="100%" height="100%"
-		   bgcolor="0x000000" bgalpha="0.0"
+       align="righttop" x="40" y="40"
+       width="90" height="90"		   
+	   bgcolor="0x000000" bgalpha="0.0"
 		   bgcapture="true"
-		   zorder="999901"
+		   zorder="999910"
 		   onclick="close_gallery();" />
 
 	<layer name="gallery_img"
@@ -450,7 +451,7 @@
 	<layer name="gallery_close"
 		   type="text" keep="true"
 		   parent="gallery_bg"
-		   align="righttop" x="20" y="20"
+		   align="righttop" x="40" y="40"
 		   html="×"
 		   css="font-family:Arial; font-size:44px; font-weight:700; color:#fff;"
 		   			   bgcolor="0xFFFFFF" bgalpha="0"
@@ -651,7 +652,7 @@ In addition, jjokbit was widely used by the common people. People dyed various c
 	<data name="txt_hs_article_21_title">
 		<![CDATA[
 생활을 지킨 푸른 빛 <br>
-The Blue Hue that Has Protected Our Lives
+The blue light that protected life
 ]]>
 	</data>
 
@@ -823,7 +824,7 @@ Now, let’s embark on another indigo journey that Austria presents.
 <b>석회 ｜ 石灰 ｜ Lime</b><br>
 염색장 보유자 정관채 · 2025<br><br>
 
-쪽물에 섞어 침전쪽을 만들기 위해 넣는 재료이다. 가마에 굴 또는 조개껍질을 넣고 높은 온도에서 구워서 항아리에약 2주에서 한 달 간 보관하면 가루가 된다.
+쪽물에 섞어 침전쪽을 만들기 위해 넣는 재료이다. 가마에 굴 또는 조개껍질을 넣고 높은 온도에서 구워서 항아리에 약 2주에서 한 달 간 보관하면 가루가 된다.
 ]]>
 	</data>
 
@@ -1417,7 +1418,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
-		<view hlookat="79.80" vlookat="-3.77" fovtype="MFOV" fov="136" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<view hlookat="77.90" vlookat="-0.78" fovtype="MFOV" fov="132.63" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
 		<preview url="panos/8_DSC06666_Panorama.tiles/preview.jpg" />
 
@@ -2787,12 +2788,9 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		distorted="false"
 		handcursor="true"
 		onclick="
-					set_gallery_caps_from_data(cap_g16_1,cap_g16_1,cap_g16_1,cap_g16_1);
-					open_gallery(4,
-					'images/gallery/16_1_1.jpg',
-					'images/gallery/16_1_2.jpg',
-					'images/gallery/16_1_3.jpg',
-					'images/gallery/16_1_4.jpg',
+					set_gallery_caps_from_data(cap_g16_1);
+					open_gallery(1,
+					'images/gallery/16_1_1.jpg'
 
 					);
 				" />
@@ -2806,9 +2804,10 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		onclick="
 					set_gallery_caps_from_data(cap_g16_2);
 					open_gallery(1,
-
+						'images/gallery/16_2_1.jpg'
 					);
 				" />
+
 
 
 	</scene>
@@ -3658,7 +3657,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
-		<view hlookat="-30.55" vlookat="13.53" fovtype="MFOV" fov="115.73" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<view hlookat="-28.71" vlookat="11.00" fovtype="MFOV" fov="115.72" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
 		<preview url="panos/29_DSC07052_Panorama.tiles/preview.jpg" />
 
