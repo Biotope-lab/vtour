@@ -153,11 +153,13 @@
 			asyncloop(pressed,
 				calc(y, drag_currenty + (mouse.stagey - drag_stagey));
 				clamp(y, get(y_min), 0);
-			);
+			update_info_scrollbar(); );
 		);
 	</action>
 
 <action name="show_text_from_data">
+	close_gallery();
+	
     set(layer[info_panel].visible, true);
     set(layer[info_panel].enabled, true); set(layer[info_panel].alpha, 1.0);
 
@@ -166,12 +168,12 @@
 
     set(layer[info_panel_text].y, 0);
 
-    delayedcall(0.2, 
-        layer[info_panel_title].update();
-        layer[info_panel_text].update();
-        calc(layer[info_panel_mask].y, layer[info_panel_title].y + layer[info_panel_title].pixelheight + 30);
-        calc(layer[info_panel_mask].height, -30 - get(layer[info_panel_mask].y));
-    );
+delayedcall(0.2, 
+    layer[info_panel_title].update();
+    layer[info_panel_text].update();
+    calc(layer[info_panel_mask].y, layer[info_panel_title].y + layer[info_panel_title].pixelheight + 30);
+    calc(layer[info_panel_mask].height, -30 - get(layer[info_panel_mask].y));
+    update_info_scrollbar(); );
 </action>
 
 <layer name="info_panel" type="container" keep="true" visible="false" enabled="true" align="righttop" 
@@ -189,11 +191,15 @@
     <layer name="info_panel_mask" type="container" align="lefttop" x="24" y="200" 
 	width="452" height="700" maskchildren="true" bgcolor="0x000000" bgalpha="0.0" capture="false">
 
-    <layer name="info_panel_text" type="text" align="lefttop" x="0" y="0" width="100%"
+	<layer name="info_scroll_track" type="container" align="righttop" x="5" y="0" width="4" height="100%" bgcolor="0x000000" bgalpha="0.1" zorder="10" />
+
+    <layer name="info_scroll_bar" type="container" align="righttop" x="5" y="0" width="4" height="50" bgcolor="0x666666" bgalpha="0.8" zorder="11" visible="false" />
+
+    <layer name="info_panel_text" type="text" align="lefttop" x="0" y="0" width="-20"
 	autoheight="true" html="true" enabled="true" background="false" capture="true"
 	css="font-family:Arial; font-size:18px; color:#333; line-height:1.6;"
 	ondown="drag_info_text();"
-    onmousewheel="calc(y, y + (wheeldelta * 40)); calc(y_min, layer[get(parent)].pixelheight - pixelheight); clamp(y, get(y_min), 0);" />
+    onmousewheel="calc(y, y + (wheeldelta * 40)); calc(y_min, layer[get(parent)].pixelheight - pixelheight); clamp(y, get(y_min), 0); update_info_scrollbar();" />
     </layer>
 </layer>
 
@@ -204,11 +210,32 @@
     stoptween(layer[info_panel].alpha);
 </action>
 
+<action name="update_info_scrollbar">
+	calc(text_h, layer[info_panel_text].pixelheight);
+    calc(mask_h, layer[info_panel_mask].pixelheight);
+    
+    if(text_h GT mask_h,
+        set(layer[info_scroll_bar].visible, true);
+        set(layer[info_scroll_track].visible, true);
+        
+        calc(layer[info_scroll_bar].height, (mask_h / text_h) * mask_h);
+        
+        calc(scroll_range, text_h - mask_h);
+        calc(bar_range, mask_h - layer[info_scroll_bar].height);
+        calc(layer[info_scroll_bar].y, (layer[info_panel_text].y / (scroll_range * -1)) * bar_range);
+    ,
+        set(layer[info_scroll_bar].visible, false);
+        set(layer[info_scroll_track].visible, false);
+    );
+</action>
+
 
 	<!-- =========================
 	GALLERY POPUP (GLOBAL)
 ========================= -->
 	<action name="open_gallery">
+		close_all_articles();
+
 		<!-- 사용법: open_gallery(count, img1, img2, img3, img4, img5, img6, img7) -->
 		set(gallery.count,%1);
 
@@ -220,6 +247,13 @@
 		if(%1 GE 6, set(gallery.img6,%7); );
 		if(%1 GE 7, set(gallery.img7,%8); );
 		if(%1 GE 8, set(gallery.img8,%9); );
+		if(%1 GE 9, set(gallery.img9,%10); );
+		if(%1 GE 10, set(gallery.img10,%11); );
+		if(%1 GE 11, set(gallery.img11,%12); );
+		if(%1 GE 12, set(gallery.img12,%13); );
+		if(%1 GE 13, set(gallery.img13,%14); );
+		if(%1 GE 14, set(gallery.img14,%15); );
+		if(%1 GE 15, set(gallery.img15,%16); );
 
 		set(gallery.index,1);
 
@@ -256,7 +290,7 @@
         asyncloop(pressed,
             calc(y, drag_currenty + (mouse.stagey - drag_stagey));
             clamp(y, get(y_min), 0);
-        );
+        update_gallery_scrollbar(););
     );
 </action>
 
@@ -275,6 +309,7 @@
     if(gallery.index == 12, set(layer[gallery_img].url, get(gallery.img12)); );
     if(gallery.index == 13, set(layer[gallery_img].url, get(gallery.img13)); );
     if(gallery.index == 14, set(layer[gallery_img].url, get(gallery.img14)); );
+    if(gallery.index == 15, set(layer[gallery_img].url, get(gallery.img15)); );
 
     set(layer[gallery_caption].y, 0);
     
@@ -333,6 +368,7 @@
 		set(gallery.cap12, %12);
 		set(gallery.cap13, %13);
 		set(gallery.cap14, %14);
+		set(gallery.cap14, %15);
 	</action>
 
 	<!-- show_text_from_data 방식처럼 "data[]의 content"를 직접 읽어서 출력 -->
@@ -373,6 +409,11 @@
 		if(gallery.index == 12,
 		if(gallery.cap12, set(layer[gallery_caption].html, get(data[get(gallery.cap12)].content)); , set(layer[gallery_caption].html,''); );
 		);
+
+set(layer[gallery_caption].y, 0);
+delayedcall(0.1, 
+    layer[gallery_caption].update(); 
+    update_gallery_scrollbar(); );
 	</action>
 
 	<layer name="gallery_bg"
@@ -478,10 +519,14 @@
            type="container" align="lefttop" x="20" y="15" 
            width="-40" height="-30" maskchildren="true" bgalpha="0.0" capture="false">
 
+		   <layer name="gallery_scroll_track" type="container" align="righttop" x="0" y="0" width="3" height="100%" bgcolor="0xffffff" bgalpha="0.1" zorder="10" />
+
+    <layer name="gallery_scroll_bar" type="container" align="righttop" x="0" y="0" width="3" height="50" bgcolor="0xffffff" bgalpha="0.6" zorder="11" visible="false" />
+
         <layer name="gallery_caption"
                type="text"
                align="top" x="0" y="0"
-               width="100%"
+               width="-25"
                autoheight="true"
                html="true"
                wordwrap="true"
@@ -491,8 +536,8 @@
                capture="true"
                enabled="true"
                ondown="drag_gallery_text();"
-               onmousewheel="calc(y, y + (wheeldelta * 40)); calc(y_min, layer[get(parent)].pixelheight - pixelheight); if(y_min LT 0, clamp(y, get(y_min), 0), set(y,0));" />
-    </layer>
+				onmousewheel="calc(y, y + (wheeldelta * 40)); calc(y_min, layer[get(parent)].pixelheight - pixelheight); if(y_min LT 0, clamp(y, get(y_min), 0), set(y,0)); update_gallery_scrollbar();" />    
+			</layer>
 </layer>
 
 
@@ -509,6 +554,24 @@
 		set(layer[gallery_caption].html, '');
 	</action>
 	
+	<action name="update_gallery_scrollbar">
+	calc(text_h, layer[gallery_caption].pixelheight);
+    calc(mask_h, layer[gallery_caption_mask].pixelheight);
+    
+    if(text_h GT mask_h,
+        set(layer[gallery_scroll_bar].visible, true);
+        set(layer[gallery_scroll_track].visible, true);
+        
+        calc(layer[gallery_scroll_bar].height, (mask_h / text_h) * mask_h);
+        
+        calc(scroll_range, text_h - mask_h);
+        calc(bar_range, mask_h - layer[gallery_scroll_bar].height);
+        calc(layer[gallery_scroll_bar].y, (layer[gallery_caption].y / (scroll_range * -1)) * bar_range);
+    ,
+        set(layer[gallery_scroll_bar].visible, false);
+        set(layer[gallery_scroll_track].visible, false);
+    );
+</action>
 	
 <events name="main_events" keep="true"
     onnewscene="
@@ -519,6 +582,7 @@
         if(hotspot[hsp_2_video], hotspot[hsp_2_video].stop(); );
         if(hotspot[hsp_11_video], hotspot[hsp_11_video].stop(); );
         if(hotspot[hsp_30_video], hotspot[hsp_30_video].stop(); );
+        if(hotspot[hsp_37_video], hotspot[hsp_37_video].stop(); );
         if(hotspot[hsp_41_video], hotspot[hsp_41_video].stop(); );
         if(hotspot[hsp_45_video], hotspot[hsp_45_video].stop(); );
         if(hotspot[hsp_50_video], hotspot[hsp_50_video].stop(); );
@@ -754,7 +818,7 @@ Now, let’s embark on another indigo journey that Austria presents.
 	<data name="cap_g7_2">
 		<![CDATA[
 <b>산림경제 ｜ 山林經濟 ｜ Sallim gyeongje (Farm Management)</b><br>
-서울대학교 규장각한국학연구원/중앙도서관 · 연대미상 · 홍만선(洪萬選, 1643~1715)<br><br>
+서울대학교 규장각한국학연구원(서울대학교 중앙도서관 소장자료) · 연대미상 · 홍만선(洪萬選, 1643~1715)<br><br>
 
 조선 후기 문신이자 실학자인 홍만선(洪萬選, 1643~1715)이 쓴 농서이다. 쪽 염색에서 사용되는 쪽풀을 재배하는 방법과 쪽 염색을 하는 방법이 소개되어 있다.
 <br><br>
@@ -769,7 +833,7 @@ Now, let’s embark on another indigo journey that Austria presents.
 	<data name="cap_g7_3">
 		<![CDATA[
 <b>규합총서 ｜ 閨閤叢書 ｜ Gyuhap chongseo (Encyclopedia of Women's Lives)</b><br>
-서울대학교 규장각한국학연구원/중앙도서관 · 1809(1881) · 빙허각 이씨(憑虛閣 李氏, 1759~1824)<br><br>
+서울대학교 규장각한국학연구원(서울대학교 중앙도서관 소장자료) · 1809(1881) · 빙허각 이씨(憑虛閣 李氏, 1759~1824)<br><br>
 
 빙허각 이씨(憑虛閣 李氏, 1759~1824)가 엮은 가정살림에 관한 책으로, 쪽풀을 사용한 푸른색 염색법을 비롯한 다양한 염색법과 옷감을 세탁하는 세의법(洗衣法)이 수록되어 있다.<br><br>
 
@@ -1079,7 +1143,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 <b>유세손서 ｜ 諭世孫書 ｜ Yusesonseo (King Yeongjo's Will given to King Jeongjo) </b><br>
 국립고궁박물관 · 1776 <br><br>
 
-아버지 사도세자에 대한 당시 왕세손인 산(祘, 훗날의 정조)의 효심에 감동하여 영조가 내린 유서이다. 두루 마리 형태로, 겉에는 청색의 운보무늬 비단으로 꾸몄다.
+아버지 사도세자에 대한 당시 왕세손인 산(祘, 훗날의 정조)의 효심에 감동하여 영조가 내린 유서이다. 두루마리 형태로, 겉에는 청색의 운보무늬 비단으로 꾸몄다.
 ]]>
 	</data>
 
@@ -1094,7 +1158,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 
 	<data name="cap_g28_1">
 		<![CDATA[
-<b>겹보 ｜ Gyeobo (Double-layered Wrapping Cloth) </b><br>
+<b>겹보 ｜ Gyeopbo (Double-layered Wrapping Cloth) </b><br>
 국립고궁박물관 · 조선 <br><br>
 
 겉감과 안감을 맞대어 만든 겹보자기이다. 겉감은 청색 명주, 안감은 홍색 명주를 사용해 만들었다. 겉감 중앙에 홍색 명주로 만들어진 끈이 달려 있다.]]>
@@ -4904,7 +4968,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 
 				<hotspot name="hs_gallery_29_1"
 		url="images/Click.png"
-		ath="-95.6255" atv="4.6331"    scale="0.35"
+		ath="-117.8286" atv="18.5242"    scale="0.35"
 		distorted="false"
 		handcursor="true"
 		onclick="
