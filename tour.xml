@@ -158,22 +158,27 @@
 	</action>
 
 <action name="show_text_from_data">
-	close_gallery();
-	
-    set(layer[info_panel].visible, true);
-    set(layer[info_panel].enabled, true); set(layer[info_panel].alpha, 1.0);
-
+    close_gallery();
+    
     set(layer[info_panel_title].html, get:data[%1].content);
     set(layer[info_panel_text].html,  get:data[%2].content);
-
     set(layer[info_panel_text].y, 0);
-
-delayedcall(0.2, 
-    layer[info_panel_title].update();
-    layer[info_panel_text].update();
-    calc(layer[info_panel_mask].y, layer[info_panel_title].y + layer[info_panel_title].pixelheight + 30);
-    calc(layer[info_panel_mask].height, -30 - get(layer[info_panel_mask].y));
-    update_info_scrollbar(); );
+    
+    set(layer[info_scroll_bar].alpha, 0);
+    
+    delayedcall(0.03, 
+        layer[info_panel_title].update();
+        layer[info_panel_text].update();
+        
+        calc(layer[info_panel_mask].y, layer[info_panel_title].y + layer[info_panel_title].pixelheight + 30);
+        
+        set(layer[info_panel].visible, true);
+        set(layer[info_panel].enabled, true); 
+        set(layer[info_panel].alpha, 1.0);
+        
+        update_info_scrollbar();
+        tween(layer[info_scroll_bar].alpha, 0.8, 0.1);
+    );
 </action>
 
 <layer name="info_panel" type="container" keep="true" visible="false" enabled="true" align="righttop" 
@@ -191,9 +196,25 @@ delayedcall(0.2,
     <layer name="info_panel_mask" type="container" align="lefttop" x="24" y="200" 
 	width="452" height="700" maskchildren="true" bgcolor="0x000000" bgalpha="0.0" capture="false">
 
-	<layer name="info_scroll_track" type="container" align="righttop" x="5" y="0" width="4" height="100%" bgcolor="0x000000" bgalpha="0.1" zorder="10" />
+	<layer name="info_scroll_track" 
+       type="container" align="righttop" x="5" y="0" width="10" height="100%" 
+       bgcolor="0x000000" 
+       bgalpha="0.3"       zorder="10" 
+       enabled="true" capture="true" bgcapture="true"
+       ondown="drag_info_scrollbar();" visible="false" />
+	
+	
 
-    <layer name="info_scroll_bar" type="container" align="righttop" x="5" y="0" width="4" height="50" bgcolor="0x666666" bgalpha="0.8" zorder="11" visible="false" />
+	
+	<layer name="info_scroll_bar" 
+       type="container" align="righttop" x="5" y="0" width="9" height="50" 
+       bgcolor="0x666666" bgalpha="0.8" zorder="11" alpha="0" visible="false"
+       enabled="true" 
+       capture="true" 
+	   handcursor="true"
+	   onmousewheel="calc(layer[info_panel_text].y, layer[info_panel_text].y + (wheeldelta * 40)); calc(y_min, layer[info_panel_mask].pixelheight - layer[info_panel_text].pixelheight); clamp(layer[info_panel_text].y, get(y_min), 0); update_info_scrollbar();"
+       ondown="drag_info_scrollbar();" />
+
 
     <layer name="info_panel_text" type="text" align="lefttop" x="0" y="0" width="-20"
 	autoheight="true" html="true" enabled="true" background="false" capture="true"
@@ -207,11 +228,15 @@ delayedcall(0.2,
     set(layer[info_panel].alpha, 0.0);
     set(layer[info_panel].visible, false);
     set(layer[info_panel].enabled, false);
+
+	set(layer[info_panel_title].html, "");
+    set(layer[info_panel_text].html, "");
+
     stoptween(layer[info_panel].alpha);
 </action>
 
 <action name="update_info_scrollbar">
-	calc(text_h, layer[info_panel_text].pixelheight);
+calc(text_h, layer[info_panel_text].pixelheight);
     calc(mask_h, layer[info_panel_mask].pixelheight);
     
     if(text_h GT mask_h,
@@ -219,13 +244,49 @@ delayedcall(0.2,
         set(layer[info_scroll_track].visible, true);
         
         calc(layer[info_scroll_bar].height, (mask_h / text_h) * mask_h);
-        
         calc(scroll_range, text_h - mask_h);
         calc(bar_range, mask_h - layer[info_scroll_bar].height);
         calc(layer[info_scroll_bar].y, (layer[info_panel_text].y / (scroll_range * -1)) * bar_range);
     ,
         set(layer[info_scroll_bar].visible, false);
         set(layer[info_scroll_track].visible, false);
+        set(layer[info_scroll_bar].y, 0);
+        set(layer[info_panel_text].y, 0);
+    );
+</action>
+
+<action name="drag_info_scrollbar">
+    copy(start_mouse_y, mouse.stagey);
+    copy(start_bar_y, layer[info_scroll_bar].y);
+    
+    calc(bar_range, layer[info_panel_mask].pixelheight - layer[info_scroll_bar].pixelheight);
+    calc(text_range, layer[info_panel_text].pixelheight - layer[info_panel_mask].pixelheight);
+
+    asyncloop(pressed,
+        calc(layer[info_scroll_bar].y, start_bar_y + (mouse.stagey - start_mouse_y));
+        
+        clamp(layer[info_scroll_bar].y, 0, get(bar_range));
+        
+        if(bar_range GT 0,
+            calc(layer[info_panel_text].y, (layer[info_scroll_bar].y / bar_range) * text_range * -1);
+        );
+    );
+</action>
+
+<action name="drag_gallery_scrollbar">
+    copy(start_mouse_y, mouse.stagey);
+    copy(start_bar_y, layer[gallery_scroll_bar].y);
+    
+    calc(bar_range, layer[gallery_caption_mask].pixelheight - layer[gallery_scroll_bar].pixelheight);
+    calc(text_range, layer[gallery_caption].pixelheight - layer[gallery_caption_mask].pixelheight);
+
+    asyncloop(pressed,
+        calc(layer[gallery_scroll_bar].y, start_bar_y + (mouse.stagey - start_mouse_y));
+        clamp(layer[gallery_scroll_bar].y, 0, get(bar_range));
+        
+        if(bar_range GT 0,
+            calc(layer[gallery_caption].y, (layer[gallery_scroll_bar].y / bar_range) * text_range * -1);
+        );
     );
 </action>
 
@@ -410,10 +471,16 @@ delayedcall(0.2,
 		if(gallery.cap12, set(layer[gallery_caption].html, get(data[get(gallery.cap12)].content)); , set(layer[gallery_caption].html,''); );
 		);
 
-set(layer[gallery_caption].y, 0);
-delayedcall(0.1, 
-    layer[gallery_caption].update(); 
-    update_gallery_scrollbar(); );
+	set(layer[gallery_caption].y, 0);
+    
+    set(layer[gallery_scroll_bar].alpha, 0);
+
+    delayedcall(0.2, 
+        layer[gallery_caption].update(); 
+        update_gallery_scrollbar(); 
+        
+        tween(layer[gallery_scroll_bar].alpha, 0.8, 0.2);
+    );
 	</action>
 
 	<layer name="gallery_bg"
@@ -519,9 +586,21 @@ delayedcall(0.1,
            type="container" align="lefttop" x="20" y="15" 
            width="-40" height="-30" maskchildren="true" bgalpha="0.0" capture="false">
 
-		   <layer name="gallery_scroll_track" type="container" align="righttop" x="0" y="0" width="3" height="100%" bgcolor="0xffffff" bgalpha="0.1" zorder="10" />
-
-    <layer name="gallery_scroll_bar" type="container" align="righttop" x="0" y="0" width="3" height="50" bgcolor="0xffffff" bgalpha="0.6" zorder="11" visible="false" />
+<layer name="gallery_scroll_track" 
+       type="container" align="righttop" x="2" y="0" width="9" height="100%" 
+       bgcolor="0xffffff" 
+       bgalpha="0.2"       zorder="10" 
+       enabled="true" capture="true" bgcapture="true"
+       ondown="drag_gallery_scrollbar();" visible="false" />
+	   
+	<layer name="gallery_scroll_bar" 
+       type="container" align="righttop" x="2" y="0" width="7" height="50" 
+       bgcolor="0xffffff" bgalpha="0.8" zorder="11" alpha="0" visible="false"
+       enabled="true" 
+       capture="true" 
+		handcursor="true"
+		onmousewheel="calc(layer[gallery_caption].y, layer[gallery_caption].y + (wheeldelta * 40)); calc(y_min, layer[gallery_caption_mask].pixelheight - layer[gallery_caption].pixelheight); if(y_min LT 0, clamp(layer[gallery_caption].y, get(y_min), 0), set(layer[gallery_caption].y,0)); update_gallery_scrollbar();"
+       ondown="drag_gallery_scrollbar();" />
 
         <layer name="gallery_caption"
                type="text"
@@ -554,8 +633,8 @@ delayedcall(0.1,
 		set(layer[gallery_caption].html, '');
 	</action>
 	
-	<action name="update_gallery_scrollbar">
-	calc(text_h, layer[gallery_caption].pixelheight);
+<action name="update_gallery_scrollbar">
+    calc(text_h, layer[gallery_caption].pixelheight);
     calc(mask_h, layer[gallery_caption_mask].pixelheight);
     
     if(text_h GT mask_h,
@@ -563,13 +642,14 @@ delayedcall(0.1,
         set(layer[gallery_scroll_track].visible, true);
         
         calc(layer[gallery_scroll_bar].height, (mask_h / text_h) * mask_h);
-        
         calc(scroll_range, text_h - mask_h);
         calc(bar_range, mask_h - layer[gallery_scroll_bar].height);
         calc(layer[gallery_scroll_bar].y, (layer[gallery_caption].y / (scroll_range * -1)) * bar_range);
     ,
         set(layer[gallery_scroll_bar].visible, false);
         set(layer[gallery_scroll_track].visible, false);
+        set(layer[gallery_scroll_bar].y, 0);
+        set(layer[gallery_caption].y, 0);
     );
 </action>
 	
@@ -1448,7 +1528,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 			style="hs_anim"
 			url="Animated/ani9.png"
 			animurl="Animated/ani9.png"
-		ath="-36.7000" atv="15.0486"
+		ath="-41.3023" atv="9.7156"
 			onclick="loadscene(scene_9,null,MERGE,BLEND(0.5));"
 			onloaded="hs_play(hsp_5_9);" />
 
@@ -1517,7 +1597,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 			style="hs_anim"
 			url="Animated/ani8.png"
 			animurl="Animated/ani8.png"
-		ath="-109.5741" atv="-1.6211"  onclick="loadscene(scene_8,null,MERGE,BLEND(0.5));"
+		 ath="-108.4646" atv="-16.8961"   onclick="loadscene(scene_8,null,MERGE,BLEND(0.5));"
 			onloaded="hs_play(hsp_6_8);" />
 
 				<hotspot name="hsp_6_9"
@@ -1836,7 +1916,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 			style="hs_anim"
 			url="Animated/ani8.png"
 			animurl="Animated/ani8.png"
-		ath="-213.7964" atv="21.5232" onclick="loadscene(scene_8,null,MERGE,BLEND(0.5));"
+		ath="149.9977" atv="-17.1701" onclick="loadscene(scene_8,null,MERGE,BLEND(0.5));"
 			onloaded="hs_play(hsp_9_8);" />
 
 				<hotspot name="hsp_9_10"
@@ -1959,7 +2039,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 			style="hs_anim"
 			url="Animated/ani8.png"
 			animurl="Animated/ani8.png"
-		ath="170.1594" atv="10.2846"  onclick="loadscene(scene_8,null,MERGE,BLEND(0.5));"
+		ath="168.4623" atv="-10.7242"  onclick="loadscene(scene_8,null,MERGE,BLEND(0.5));"
 			onloaded="hs_play(hsp_10_8);" />
 
 				<hotspot name="hsp_10_9"
@@ -2050,7 +2130,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani9.png"
 		animurl="Animated/ani9.png"
-		ath="-130.6005" atv="9.7543"
+		ath="-129.4172" atv="4.4139"
 						onclick="loadscene(scene_9,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_11_9);" />
 
@@ -2059,7 +2139,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani10.png"
 		animurl="Animated/ani10.png"
-		ath="-121.2313" atv="12.2499"
+		ath="-117.4581" atv="5.8576"
 		onclick="loadscene(scene_10,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_11_10);" />
 
@@ -2076,7 +2156,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani13.png"
 		animurl="Animated/ani13.png"
-		ath="81.6232" atv="14.9359"
+		 ath="85.4521" atv="2.2678"
 		onclick="loadscene(scene_13,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_11_13);" />
 
@@ -2086,7 +2166,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani14.png"
 		animurl="Animated/ani14.png"
-		ath="73.3508" atv="11.3204"
+		ath="77.4807" atv="1.4817"
 		onclick="loadscene(scene_14,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_11_14);" />
 
@@ -2095,7 +2175,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani15.png"
 		animurl="Animated/ani15.png"
-		ath="68.1378" atv="8.9879"
+		ath="70.5307" atv="0.4080"
 		onclick="loadscene(scene_15,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_11_15);" />
 
@@ -2103,7 +2183,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani16.png"
 		animurl="Animated/ani16.png"
-		ath="64.3085" atv="7.0559"
+		ath="65.1570" atv="-0.2366"
 		onclick="loadscene(scene_16,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_11_16);" />
 
@@ -2112,7 +2192,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani22.png"
 		animurl="Animated/ani22.png"
-		ath="36.8884" atv="7.1249"
+		ath="31.7753" atv="-1.4848"
 		onclick="loadscene(scene_22,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_11_22);" />		
 
@@ -2122,7 +2202,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani23.png"
 		animurl="Animated/ani23.png"
-		ath="32.7644" atv="9.8018"
+		 ath="26.1107" atv="-1.5426"
 		onclick="loadscene(scene_23,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_11_23);" />		
 
@@ -2132,7 +2212,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani24.png"
 		animurl="Animated/ani24.png"
-		ath="27.4362" atv="12.7315"
+		ath="20.7044" atv="-2.7250"
 		onclick="loadscene(scene_24,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_11_24);" />		
 
@@ -2141,7 +2221,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani25.png"
 		animurl="Animated/ani25.png"
-		ath="41.1582" atv="11.1545"
+		 ath="53.4961" atv="2.0333"
 		onclick="loadscene(scene_25,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_11_25);" />		
 	
@@ -2150,7 +2230,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani26.png"
 		animurl="Animated/ani26.png"
-		ath="42.4257" atv="7.2690"
+		 ath="49.4605" atv="0.2942" 
 		onclick="loadscene(scene_26,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_11_26);" />		
 	
@@ -2171,7 +2251,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 
 	
 	</scene>
-	
+		
 	<scene name="scene_12" title="14_DSC06788 Panorama" onstart="" thumburl="panos/14_DSC06788_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
@@ -2254,7 +2334,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani24.png"
 		animurl="Animated/ani24.png"
-		ath="-14.0796" atv="23.0303"
+		ath="-18.0310" atv="-1.8579"
 		onclick="loadscene(scene_24,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_12_24);" />
 
@@ -2873,7 +2953,6 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 				" />
 
 
-
 	</scene>
 
 	<scene name="scene_17" title="19_DSC06872 Panorama" onstart="" thumburl="panos/19_DSC06872_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
@@ -3148,12 +3227,15 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		onloaded="hs_play(hsp_18_26);" />			
 
 
+        <!-- 
 						<hotspot name="hsp_18_27"
 		style="hs_anim"
 		url="Animated/ani27.png"
 		animurl="Animated/ani27.png"
 		ath="-41.6230" atv="13.4890"		 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_18_27);" />			
+		-->
+		
 
 								<hotspot name="hsp_18_30"
 		style="hs_anim"
@@ -3166,7 +3248,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani31.png"
 		animurl="Animated/ani31.png"
-		ath="-12.1345" atv="16.0109"		 onclick="loadscene(scene_31,null,MERGE,BLEND(0.5));"
+		ath="-10.2573" atv="10.0923"		 onclick="loadscene(scene_31,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_18_31);" />		
 
 
@@ -3308,21 +3390,21 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani27.png"
 		animurl="Animated/ani27.png"
-		ath="-19.0058" atv="15.4932"		 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
+		ath="-24.4491" atv="10.1290" 	 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_19_27);" />
 
 				<hotspot name="hsp_19_28"
 		style="hs_anim"
 		url="Animated/ani28.png"
 		animurl="Animated/ani28.png"
-		ath="-19.3031" atv="11.0579" 	 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
+		ath="-22.8099" atv="7.3272"  	 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_19_28);" />
 
 				<hotspot name="hsp_19_29"
 		style="hs_anim"
 		url="Animated/ani29.png"
 		animurl="Animated/ani29.png"
-		ath="-19.3050" atv="8.4396" 	 onclick="loadscene(scene_29,null,MERGE,BLEND(0.5));"
+		ath="-20.7900" atv="5.3987"	 onclick="loadscene(scene_29,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_19_29);" />
 
 
@@ -3445,14 +3527,14 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani22.png"
 		animurl="Animated/ani22.png"
-		ath="-108.6513" atv="18.9131" 		 onclick="loadscene(scene_22,null,MERGE,BLEND(0.5));"
+		ath="-100.4135" atv="-0.1566"  		 onclick="loadscene(scene_22,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_20_22);" />
 
 				<hotspot name="hsp_20_23"
 		style="hs_anim"
 		url="Animated/ani23.png"
 		animurl="Animated/ani23.png"
-		ath="-118.5905" atv="13.0821" 		 onclick="loadscene(scene_23,null,MERGE,BLEND(0.5));"
+		ath="-110.8234" atv="-0.3486"		 onclick="loadscene(scene_23,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_20_23);" />
 
 
@@ -3504,7 +3586,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani30.png"
 		animurl="Animated/ani30.png"
-		ath="-32.5225" atv="16.0620" 	 onclick="loadscene(scene_30,null,MERGE,BLEND(0.5));"
+		ath="-27.5091" atv="8.0715"	 onclick="loadscene(scene_30,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_20_30);" />
 
 				<hotspot name="hsp_20_31"
@@ -4010,7 +4092,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani22.png"
 		animurl="Animated/ani22.png"
-		ath="26.4804" atv="42.9139" 		 onclick="loadscene(scene_22,null,MERGE,BLEND(0.5));"
+		ath="2.0516" atv="8.9025" 		 onclick="loadscene(scene_22,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_23_22);" />
 
 
@@ -4018,7 +4100,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani24.png"
 		animurl="Animated/ani24.png"
-		ath="-114.9632" atv="20.8928" 		 onclick="loadscene(scene_24,null,MERGE,BLEND(0.5));"
+		ath="-92.6253" atv="0.7682"	 onclick="loadscene(scene_24,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_23_24);" />
 
 
@@ -4170,7 +4252,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani21.png"
 		animurl="Animated/ani21.png"
-		ath="52.2026" atv="14.4456"		 onclick="loadscene(scene_21,null,MERGE,BLEND(0.5));"
+		ath="49.3416" atv="-1.9117"		 onclick="loadscene(scene_21,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_24_21);" />
 
 				<hotspot name="hsp_24_22"
@@ -4379,7 +4461,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani21.png"
 		animurl="Animated/ani21.png"
-		ath="52.2026" atv="14.4456"		 onclick="loadscene(scene_21,null,MERGE,BLEND(0.5));"
+		ath="50.0405" atv="-1.8146"		 onclick="loadscene(scene_21,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_25_21);" />
 
 				<hotspot name="hsp_25_22"
@@ -4591,7 +4673,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani22.png"
 		animurl="Animated/ani22.png"
-		ath="26.4804" atv="42.9139" 		 onclick="loadscene(scene_22,null,MERGE,BLEND(0.5));"
+		ath="3.3519" atv="8.9572" 		 onclick="loadscene(scene_22,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_26_22);" />
 
 				<hotspot name="hsp_26_23"
@@ -4605,7 +4687,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani24.png"
 		animurl="Animated/ani24.png"
-		ath="-114.9632" atv="20.8928" 		 onclick="loadscene(scene_24,null,MERGE,BLEND(0.5));"
+		ath="-92.4805" atv="1.0400" 		 onclick="loadscene(scene_24,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_26_24);" />
 
 
@@ -4697,7 +4779,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani19.png"
 		animurl="Animated/ani19.png"
-		ath="154.3194" atv="18.9081"  		 
+		ath="150.7159" atv="6.8629" 	 
 		onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_27_19);" />
 
@@ -4705,7 +4787,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani20.png"
 		animurl="Animated/ani20.png"
-		ath="135.9838" atv="22.2475"  		 
+		ath="136.3830" atv="2.5203"  		 
 		onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_27_20);" />
 
@@ -4722,7 +4804,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani28.png"
 		animurl="Animated/ani28.png"
-		ath="-48.8736" atv="46.6850" 
+		ath="-68.1694" atv="36.6145"
 		onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_27_28);" />
 
@@ -4730,7 +4812,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani29.png"
 		animurl="Animated/ani29.png"
-		ath="-37.4151" atv="25.5274" 		 
+		ath="-45.2343" atv="19.8564"  		 
 		onclick="loadscene(scene_29,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_27_29);" />
 
@@ -4825,14 +4907,14 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani19.png"
 		animurl="Animated/ani19.png"
-		ath="136.2844" atv="16.4521"		 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
+		ath="133.0454" atv="6.9654" 		 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_28_19);" />
 
 				<hotspot name="hsp_28_20"
 		style="hs_anim"
 		url="Animated/ani20.png"
 		animurl="Animated/ani20.png"
-		ath="122.0324" atv="19.1933" 		 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
+		ath="121.0670" atv="2.5946"		 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_28_20);" />
 
 
@@ -4840,14 +4922,14 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani27.png"
 		animurl="Animated/ani27.png"
-		ath="156.9165" atv="46.2815"		 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
+		ath="171.1650" atv="35.1061"		 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_28_27);" />
 
 		<hotspot name="hsp_28_29"
 		style="hs_anim"
 		url="Animated/ani29.png"
 		animurl="Animated/ani29.png"
-		ath="-51.2762" atv="42.0011"		 onclick="loadscene(scene_29,null,MERGE,BLEND(0.5));"
+		ath="-73.0934" atv="33.0568"		 onclick="loadscene(scene_29,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_28_29);" />
 
 				<hotspot name="hsp_28_30"
@@ -4932,7 +5014,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 			style="hs_anim"
 			url="Animated/ani27.png"
 			animurl="Animated/ani27.png"
-			ath="166.5578" atv="29.7470"	 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
+			ath="176.8358" atv="24.6501"	 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
 			onloaded="hs_play(hsp_29_27);" />
 
 			<hotspot name="hsp_29_28"
@@ -5068,23 +5150,24 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 				style="hs_anim"
 				url="Animated/ani19.png"
 				animurl="Animated/ani19.png"
-			ath="151.6796" atv="14.3886" 		 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
+			ath="145.2254" atv="4.6951" 		 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
 				onloaded="hs_play(hsp_30_19);" />
 
 				<hotspot name="hsp_30_20"
 		style="hs_anim"
 		url="Animated/ani20.png"
 		animurl="Animated/ani20.png"
-		ath="139.1940" atv="18.8734" 		 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
+		ath="133.8106" atv="1.3709"		 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_30_20);" />
 
+		<!-- 
 				<hotspot name="hsp_30_21"
 		style="hs_anim"
 		url="Animated/ani21.png"
 		animurl="Animated/ani21.png"
 		ath="-179.4803" atv="19.0759" 	 onclick="loadscene(scene_21,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_30_21);" />
-
+		-->
 
 				<hotspot name="hsp_30_26"
 				style="hs_anim"
@@ -5097,21 +5180,21 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 				style="hs_anim"
 				url="Animated/ani27.png"
 				animurl="Animated/ani27.png"
-				ath="-157.9690" atv="39.5007" 		 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
+				ath="-156.2915" atv="23.5041" 		 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
 				onloaded="hs_play(hsp_30_27);" />
 
 				<hotspot name="hsp_30_28"
 				style="hs_anim"
 				url="Animated/ani28.png"
 				animurl="Animated/ani28.png"
-		ath="-115.0031" atv="42.3037" 		 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
+		ath="-118.4029" atv="25.7707"  		 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
 				onloaded="hs_play(hsp_30_28);" />
 
 				<hotspot name="hsp_30_29"
 				style="hs_anim"
 				url="Animated/ani29.png"
 				animurl="Animated/ani29.png"
-			ath="-79.7560" atv="32.7099" 		 onclick="loadscene(scene_29,null,MERGE,BLEND(0.5));"
+			ath="-85.6043" atv="19.0898" 		 onclick="loadscene(scene_29,null,MERGE,BLEND(0.5));"
 				onloaded="hs_play(hsp_30_29);" />
 
 				<hotspot name="hsp_30_31"
@@ -5143,7 +5226,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 
 
 
-		<hotspot name="hsp_30_video" style="vid_hs_addhs" ath="51.3240" atv="2.4460" ry="-2.2" rz="-0.42" tx="147.4000" ty="179.0000" tz="114.0000" videourl="%FIRSTXML%/add_hotspot/video/30_video.mp4" info_ah="30_video.mp4" loop="true" play_vh="true" drag_hs="false" pausedonstart="false" />
+		<hotspot name="hsp_30_video" style="vid_hs_addhs" ath="51.3240" atv="2.4460" ry="-2.2" rz="-0.42" tx="147.4000" ty="179.0000" tz="114.0000" videourl="%FIRSTXML%/add_hotspot/video/30_video.mp4" info_ah="30_video.mp4" loop="true" play_vh="true" drag_hs="false"  pausedonstart="false" />
 	</scene>
 
 	<scene name="scene_31" title="30_DSC07073 Panorama" onstart="" thumburl="panos/30_DSC07073_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
@@ -5215,23 +5298,24 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani19.png"
 		animurl="Animated/ani19.png"
-		ath="169.6354" atv="23.6868"		 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
+		ath="162.1841" atv="9.2144"		 onclick="loadscene(scene_19,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_31_19);" />		
 				
 				<hotspot name="hsp_31_20"
 		style="hs_anim"
 		url="Animated/ani20.png"
 		animurl="Animated/ani20.png"
-		ath="147.6997" atv="29.6754"		 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
+		ath="146.5811" atv="0.5163"		 onclick="loadscene(scene_20,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_31_20);" />
 
+		<!-- 
 				<hotspot name="hsp_31_21"
 		style="hs_anim"
 		url="Animated/ani21.png"
 		animurl="Animated/ani21.png"
 		ath="-131.4045" atv="36.7947" 		 onclick="loadscene(scene_21,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_31_21);" />
-
+-->
 				<hotspot name="hsp_31_25"
 				style="hs_anim"
 				url="Animated/ani25.png"
@@ -5250,21 +5334,21 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 				style="hs_anim"
 				url="Animated/ani27.png"
 				animurl="Animated/ani27.png"
-			ath="-78.9986" atv="45.6780" 	 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
+			ath="-84.1567" atv="34.0178" 	 onclick="loadscene(scene_27,null,MERGE,BLEND(0.5));"
 				onloaded="hs_play(hsp_31_27);" />
 
 				<hotspot name="hsp_31_28"
 				style="hs_anim"
 				url="Animated/ani28.png"
 				animurl="Animated/ani28.png"
-		ath="-52.2799" atv="30.3077" 		 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
+		ath="-64.7961" atv="26.3188"		 onclick="loadscene(scene_28,null,MERGE,BLEND(0.5));"
 				onloaded="hs_play(hsp_31_28);" />
 
 				<hotspot name="hsp_31_29"
 				style="hs_anim"
 				url="Animated/ani29.png"
 				animurl="Animated/ani29.png"
-				ath="-42.4696" atv="21.0125"		 onclick="loadscene(scene_29,null,MERGE,BLEND(0.5));"
+				ath="-47.3770" atv="17.0656"		 onclick="loadscene(scene_29,null,MERGE,BLEND(0.5));"
 				onloaded="hs_play(hsp_31_29);" />
 				
 				<hotspot name="hsp_31_30"
@@ -5302,6 +5386,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 
 	</scene>
 
+
 	<scene name="scene_32" title="35_DSC07167 Panorama" onstart="" thumburl="panos/35_DSC07167_Panorama.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 
 		<control bouncinglimits="calc:image.cube ? true : false" />
@@ -5334,7 +5419,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 				style="hs_anim"
 				url="Animated/ani29.png"
 				animurl="Animated/ani29.png"
-		ath="-134.0580" atv="25.2336"		 onclick="loadscene(scene_29,null,MERGE,BLEND(0.5));"
+		ath="-133.8096" atv="16.5939"		 onclick="loadscene(scene_29,null,MERGE,BLEND(0.5));"
 				onloaded="hs_play(hsp_32_29);" />
 
 
