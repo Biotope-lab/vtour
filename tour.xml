@@ -3883,7 +3883,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani21.png"
 		animurl="Animated/ani21.png"
-		ath="-86.7244" atv="51.2481"  		 onclick="loadscene(scene_21,null,MERGE,BLEND(0.5));"
+		ath="19.2591" atv="16.8493" 		 onclick="loadscene(scene_21,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_22_21);" />
 
 				<hotspot name="hsp_22_23"
@@ -4481,7 +4481,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani24.png"
 		animurl="Animated/ani24.png"
-		ath="-76.7800" atv="44.8222" 		 onclick="loadscene(scene_24,null,MERGE,BLEND(0.5));"
+		ath="-45.8083" atv="-1.9051" 		 onclick="loadscene(scene_24,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_25_24);" />
 
 				<hotspot name="hsp_25_26"
@@ -4677,7 +4677,7 @@ Inner Case, Protective Case, and Outer Case of Gisa gyecheop (Album of Paintings
 		style="hs_anim"
 		url="Animated/ani23.png"
 		animurl="Animated/ani23.png"
-		ath="-31.8881" atv="60.8829" 		 onclick="loadscene(scene_23,null,MERGE,BLEND(0.5));"
+		ath="-29.8238" atv="8.6142"		 onclick="loadscene(scene_23,null,MERGE,BLEND(0.5));"
 		onloaded="hs_play(hsp_26_23);" />
 
 				<hotspot name="hsp_26_24"
