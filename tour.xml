@@ -372,9 +372,8 @@ calc(text_h, layer[info_panel_text].pixelheight);
     if(gallery.index == 14, set(layer[gallery_img].url, get(gallery.img14)); );
     if(gallery.index == 15, set(layer[gallery_img].url, get(gallery.img15)); );
 
-    set(layer[gallery_caption].y, 0);
-    
-    set(layer[gallery_img].alpha, 0.0);
+set(layer[gallery_caption].y, 0);
+    set(layer[gallery_caption].html, ""); set(layer[gallery_img].alpha, 0.0);
     set(layer[gallery_img].visible, true);
     set(layer[gallery_img].onloaded, gallery_fit_and_fade(); );
 
@@ -471,17 +470,15 @@ calc(text_h, layer[info_panel_text].pixelheight);
 		if(gallery.cap12, set(layer[gallery_caption].html, get(data[get(gallery.cap12)].content)); , set(layer[gallery_caption].html,''); );
 		);
 
-	set(layer[gallery_caption].y, 0);
-    
+set(layer[gallery_caption].y, 0);
     set(layer[gallery_scroll_bar].alpha, 0);
 
-    delayedcall(0.2, 
+    delayedcall(0.03, 
         layer[gallery_caption].update(); 
         update_gallery_scrollbar(); 
-        
-        tween(layer[gallery_scroll_bar].alpha, 0.8, 0.2);
+        tween(layer[gallery_scroll_bar].alpha, 0.8, 0.1);
     );
-	</action>
+</action>
 
 	<layer name="gallery_bg"
 	type="container" keep="true"
@@ -594,7 +591,7 @@ calc(text_h, layer[info_panel_text].pixelheight);
        ondown="drag_gallery_scrollbar();" visible="false" />
 	   
 	<layer name="gallery_scroll_bar" 
-       type="container" align="righttop" x="2" y="0" width="7" height="50" 
+       type="container" align="righttop" x="2" y="0" width="8" height="50" 
        bgcolor="0xffffff" bgalpha="0.8" zorder="11" alpha="0" visible="false"
        enabled="true" 
        capture="true" 
@@ -620,18 +617,18 @@ calc(text_h, layer[info_panel_text].pixelheight);
 </layer>
 
 
-	<action name="close_gallery">
-		set(layer[gallery_bg].visible,false);
-		set(layer[gallery_bg].enabled,false);
+<action name="close_gallery">
+    set(layer[gallery_bg].visible, false);
+    set(layer[gallery_bg].enabled, false);
 
-		<!-- 다음 오픈을 위한 상태 초기화 -->
-		set(layer[gallery_img].onloaded, null);
-		set(layer[gallery_img].url, null);
-		set(layer[gallery_img].alpha, 1.0);
-		set(layer[gallery_img].scale, 1.0);
+    set(layer[gallery_img].onloaded, null);
+    set(layer[gallery_img].url, null);
+    set(layer[gallery_img].alpha, 0.0); set(layer[gallery_img].scale, 1.0);
 
-		set(layer[gallery_caption].html, '');
-	</action>
+    set(layer[gallery_caption].html, "");
+    set(layer[gallery_caption].y, 0);
+    set(layer[gallery_scroll_bar].visible, false);
+</action>
 	
 <action name="update_gallery_scrollbar">
     calc(text_h, layer[gallery_caption].pixelheight);
